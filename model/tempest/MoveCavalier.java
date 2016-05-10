@@ -1,13 +1,11 @@
 package model.tempest;
 
 import model.AbstractPiece;
-import model.Coord;
 
 public class MoveCavalier extends AbstractMoveStrategy{
 
-	public MoveCavalier(Class<? extends AbstractPiece> type, Coord init) {
-		super(type, init);
-		// TODO Auto-generated constructor stub
+	public MoveCavalier(Class<? extends AbstractPiece> type, Deplacement dep) {
+		super(type, dep);
 	}
 
 	@Override

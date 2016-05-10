@@ -4,7 +4,7 @@ import model.AbstractPiece;
 import model.Coord;
 
 public abstract class AbstractMoveStrategy implements MoveStrategy{
-	private final Boolean premierCoup;
+	protected  Boolean premierCoup;
 	Coord init;
 	Class<? extends AbstractPiece> type;
 	
