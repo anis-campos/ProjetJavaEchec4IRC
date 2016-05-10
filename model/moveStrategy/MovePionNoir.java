@@ -17,7 +17,7 @@ public class MovePionNoir extends MovePion {
 	}
 
     @Override
-    protected boolean isVertiacalOk(int yFinal) {
+    protected boolean isVerticalOk(int yFinal) {
         return yFinal - this.dep.cInit.y > 0;
     }
 

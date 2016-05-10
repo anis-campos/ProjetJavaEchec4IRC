@@ -15,6 +15,7 @@ public class ViewUpdaterFactory {
     public static HashMap<Class<? extends Notification>, IViewUpdater> mapping() {
 
         HashMap<Class<? extends Notification>, IViewUpdater> map = new HashMap<>();
+
         //TODO : Utiliser une boucle pour parcourir toute les Notification
         map.put(MoveNotification.class, new ViewUpdater<MoveNotification>());
         map.put(StartNotification.class, new ViewUpdater<StartNotification>());

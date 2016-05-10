@@ -6,19 +6,19 @@ import tools.Introspection;
 /**
  * Created by Anis on 10/05/2016.
  */
-public class MoveStrategyFactory implements IMoveStrategyFactory{
+public class MoveStrategyStandardFactory implements IMoveStrategyFactory{
 
-    private static MoveStrategyFactory instance;
+    private static MoveStrategyStandardFactory instance;
 
 
     //Cacher le constructeur
-    private MoveStrategyFactory() {
+    private MoveStrategyStandardFactory() {
     }
 
 
-    public static MoveStrategyFactory getInstance() {
+    public static MoveStrategyStandardFactory getInstance() {
         if (instance == null) {
-            instance = new MoveStrategyFactory();
+            instance = new MoveStrategyStandardFactory();
         }
 
         return instance;

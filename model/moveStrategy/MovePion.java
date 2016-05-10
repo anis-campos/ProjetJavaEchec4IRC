@@ -20,7 +20,7 @@ public abstract class MovePion implements MoveStrategy {
                     && (Math.abs(dep.cFinal.y - dep.cInit.y) <= 1 ||
                     (Math.abs(dep.cFinal.y - dep.cInit.y) <= 2 && dep.premierCoup == true))) {
 
-                ret = isVertiacalOk(dep.cFinal.y);
+                ret = isVerticalOk(dep.cFinal.y);
             }
         }
         // Déplacement diagonal
@@ -33,7 +33,7 @@ public abstract class MovePion implements MoveStrategy {
     }
 
 
-    protected abstract boolean isVertiacalOk(int yFinal);
+    protected abstract boolean isVerticalOk(int yFinal);
 
     protected abstract boolean isDiagonalOk(int xFinal, int yFinal);
 
