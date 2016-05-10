@@ -3,8 +3,18 @@ package model.moveStrategy;
 
 public class MovePionNoir extends MovePion {
 
-    public MovePionNoir() {
-    }
+	private static MovePionNoir instance;
+	
+	private MovePionNoir() {
+	}
+	
+	public static MovePionNoir getInstance(){
+		if (instance == null) {
+            instance = new MovePionNoir();
+        }
+
+        return instance;
+	}
 
     @Override
     protected boolean isVertiacalOk(int yFinal) {
