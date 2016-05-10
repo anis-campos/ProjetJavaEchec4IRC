@@ -2,8 +2,18 @@ package model.moveStrategy;
 
 public class MoveTour implements MoveStrategy {
 
-    public MoveTour() {
+    private static MoveTour instance;
+
+    private MoveTour() {
     }
+
+
+    public static MoveTour getInstance(){
+        if(instance ==null)
+            instance = new MoveTour();
+        return instance;
+    }
+
 
     @Override
     public boolean isMoveOk(Deplacement dep) {

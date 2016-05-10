@@ -1,7 +1,7 @@
 package model.moveStrategy;
 
 import model.pieces.AbstractPiece;
-import tools.Introspection2;
+import tools.Introspection;
 
 /**
  * Created by Anis on 10/05/2016.
@@ -31,13 +31,13 @@ public class MoveStrategyFactory {
 
         String MoveStrategyName = "model.tempest.Move" + pieceName;
 
+        MoveStrategy rep = null;
         try {
-            MoveStrategy moveStrategy = (MoveStrategy) Introspection2.newInstance(MoveStrategyName);
-            return moveStrategy;
-        } catch (InstantiationException e) {
+            rep = (MoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return null;
+        return rep;
     }
 }
