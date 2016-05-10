@@ -15,6 +15,18 @@ public abstract class AbstractMoveStrategy implements MoveStrategy{
 	}
 	
     public final boolean isMoveOkTempest(int xFinal, int yFinal){
+		if(type.getName().equals("Cavalier")){
+			
+		}
+		else if(type.getName().equals("Tour")){
+			
+		}
+		else if(type.getName().equals("Fou")){
+			
+		}
+		else{
+			
+		}
 		return false;
     }
 }
