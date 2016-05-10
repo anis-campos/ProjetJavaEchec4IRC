@@ -2,7 +2,17 @@ package model.moveStrategy;
 
 public class MoveCavalier implements MoveStrategy {
 
-	public MoveCavalier() {
+	private static MoveCavalier instance;
+	
+	private MoveCavalier() {
+	}
+	
+	public static MoveCavalier getInstance(){
+		if (instance == null) {
+            instance = new MoveCavalier();
+        }
+
+        return instance;
 	}
 
 	@Override
