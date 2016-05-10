@@ -26,7 +26,7 @@ public class MoveStrategyFactory implements IMoveStrategyFactory{
     }
 
 
-    public MoveStrategy create(Class<? extends AbstractPiece> type) {
+    public MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
         String pieceName = type.getSimpleName();
 
         String MoveStrategyName = "model.moveStrategy.Move" + pieceName;

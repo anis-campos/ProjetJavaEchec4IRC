@@ -1,6 +1,7 @@
 package model.moveStrategy;
 
 import model.pieces.AbstractPiece;
+import tools.Introspection;
 
 public class MoveStrategyTempestFactory implements IMoveStrategyFactory{
 
@@ -20,9 +21,32 @@ public class MoveStrategyTempestFactory implements IMoveStrategyFactory{
     }
 
 	@Override
-	public MoveStrategy create(Class<? extends AbstractPiece> type) {
-		// TODO Auto-generated method stub
-		return null;
+	public MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
+		String pieceName = null;
+
+		if(deplacement.cInit.x == 0 || deplacement.cInit.x == 7){
+			pieceName = "Tour";
+		}
+		else if(deplacement.cInit.x == 1 || deplacement.cInit.x == 6){
+			pieceName = "Cavalier";
+		}
+		else if(deplacement.cInit.x == 2 || deplacement.cInit.x == 5){
+			pieceName = "Fou";
+		}
+		else{
+			pieceName = type.getSimpleName();
+		}
+		
+		String MoveStrategyName = "model.moveStrategy.Move" + pieceName;
+
+        MoveStrategy rep = null;
+        try {
+            rep = (MoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return rep;
 	}
 
 }

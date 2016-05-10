@@ -6,6 +6,7 @@ import model.Couleur;
 import model.moveStrategy.Deplacement;
 import model.moveStrategy.MoveStrategy;
 import model.moveStrategy.MoveStrategyFactory;
+import model.moveStrategy.MoveStrategyTempestFactory;
 
 /**
  * @author francoise.perrin
@@ -110,7 +111,8 @@ public abstract class AbstractPiece implements Pieces {
                                   boolean isCastlingPossible) {
 
         Deplacement dep = new Deplacement(new Coord(getX(), getY()),new Coord(xFinal,yFinal), premierCoup, isCatchOk, isCastlingPossible);
-        MoveStrategy move = MoveStrategyFactory.getInstance().create(this.getClass());
+        MoveStrategy move = MoveStrategyTempestFactory.getInstance().create(this.getClass(), new Deplacement(
+        		new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
         return move.isMoveOk(dep);
     }
 
