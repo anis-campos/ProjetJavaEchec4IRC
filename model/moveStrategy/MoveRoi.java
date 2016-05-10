@@ -1,8 +1,9 @@
 package model.moveStrategy;
 
-import model.pieces.AbstractPiece;
-
 public class MoveRoi implements MoveStrategy {
+
+	public MoveRoi() {
+	}
 
 	@Override
 	public boolean isMoveOk(Deplacement dep) {

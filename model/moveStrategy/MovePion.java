@@ -4,6 +4,10 @@ public abstract class MovePion implements MoveStrategy {
 
     protected Deplacement dep;
 
+
+    protected MovePion() {
+    }
+
     @Override
     public boolean isMoveOk(Deplacement dep) {
         this.dep = dep;

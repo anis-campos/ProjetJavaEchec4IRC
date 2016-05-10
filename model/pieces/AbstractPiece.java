@@ -110,7 +110,7 @@ public abstract class AbstractPiece implements Pieces {
                                   boolean isCastlingPossible) {
 
         Deplacement dep = new Deplacement(new Coord(getX(), getY()),new Coord(xFinal,yFinal), premierCoup, isCatchOk, isCastlingPossible);
-        MoveStrategy move = MoveStrategyFactory.getInstance().create(this.getClass(), dep);
+        MoveStrategy move = MoveStrategyFactory.getInstance().create(this.getClass());
         return move.isMoveOk(dep);
     }
 

@@ -1,8 +1,9 @@
 package model.moveStrategy;
 
-import model.pieces.AbstractPiece;
-
 public class MoveCavalier implements MoveStrategy {
+
+	public MoveCavalier() {
+	}
 
 	@Override
 	public boolean isMoveOk(Deplacement dep) {

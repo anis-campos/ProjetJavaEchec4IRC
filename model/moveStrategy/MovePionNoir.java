@@ -3,6 +3,9 @@ package model.moveStrategy;
 
 public class MovePionNoir extends MovePion {
 
+    public MovePionNoir() {
+    }
+
     @Override
     protected boolean isVertiacalOk(int yFinal) {
         return yFinal - this.dep.cInit.y > 0;

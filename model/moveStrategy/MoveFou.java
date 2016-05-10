@@ -2,6 +2,8 @@ package model.moveStrategy;
 
 public class MoveFou implements MoveStrategy {
 
+    public MoveFou() {
+    }
 
     @Override
     public boolean isMoveOk(Deplacement dep) {

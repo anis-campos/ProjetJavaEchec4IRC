@@ -1,8 +1,9 @@
 package model.moveStrategy;
 
-import model.pieces.AbstractPiece;
-
 public class MoveReine implements MoveStrategy {
+
+	public MoveReine() {
+	}
 
 	@Override
 	public boolean isMoveOk(Deplacement dep) {
