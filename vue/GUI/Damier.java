@@ -25,8 +25,8 @@ public class Damier extends JPanel {
         JPanel square;
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                square = newSquare(j, i);
-                Coord c = new Coord(j, i);
+                square = newSquare(i, j);
+                Coord c = new Coord(i, j);
                 map.put(c, square);
                 this.add(square);
             }

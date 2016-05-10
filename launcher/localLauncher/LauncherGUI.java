@@ -31,7 +31,7 @@ public class LauncherGUI {
 		chessGame = new ChessGame();	
 		chessGameControler = new ChessGameControler(chessGame);
 
-		AbstractView frame = new ChessGameGUI("Jeu d'Ã©chec", chessGameControler,  dim);
+		AbstractView frame = new ChessGameGUI("Jeu d'échec", chessGameControler,  dim);
 
 		chessGame.addObserver(frame);
 		

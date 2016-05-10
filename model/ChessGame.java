@@ -32,12 +32,12 @@ public class ChessGame extends Observable {
         if (echiquier.isMoveOk(xInit, yInit, xFinal, yFinal))
             if (echiquier.move(xInit, yInit, xFinal, yFinal)) {
                 echiquier.switchJoueur();
-                notifyObservers(new MoveNotification(new Coord(xInit, xFinal), new Coord(yInit, yFinal), echiquier.getPiecesIHM(), false));
+                notifyObservers(new MoveNotification(new Coord(xInit, yInit), new Coord(xFinal, yFinal), echiquier.getPiecesIHM(), false));
                 if (echiquier.isEchec())
-                    notifyObservers(new EchecNotification(new Coord(xInit, xFinal), new Coord(yInit, yFinal), echiquier.getPiecesIHM()));
+                    notifyObservers(new EchecNotification(new Coord(xInit, yInit), new Coord(xFinal, yFinal), echiquier.getPiecesIHM()));
                 return true;
             }
-        notifyObservers(new IllegalMoveNotification(new Coord(xInit, xFinal), new Coord(yInit, yFinal), echiquier.getPiecesIHM()));
+        notifyObservers(new IllegalMoveNotification(new Coord(xInit, yInit), new Coord(xFinal, yFinal), echiquier.getPiecesIHM()));
         return false;
 
     }

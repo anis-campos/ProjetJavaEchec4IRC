@@ -19,8 +19,6 @@ public class PionBlanc extends Pion {
 
     @Override
     protected boolean isDiagonalOk(int xFinal, int yFinal) {
-
-        return yFinal == this.getY() && Math.abs(xFinal-this.getX()) == 1;
-
+        return (yFinal == this.getY() - 1) && (Math.abs(xFinal-this.getX()) == 1);
     }
 }

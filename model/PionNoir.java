@@ -20,6 +20,6 @@ public class PionNoir extends Pion {
 
     @Override
     protected boolean isDiagonalOk(int xFinal, int yFinal) {
-        return (yFinal == this.getY() + 1 && xFinal == this.getX() + 1) || (yFinal == this.getY() + 1 && xFinal == this.getX() - 1);
+        return (yFinal == this.getY() + 1) && (Math.abs(xFinal-this.getX()) == 1);
     }
 }
