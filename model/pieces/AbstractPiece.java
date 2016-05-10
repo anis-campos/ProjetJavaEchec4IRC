@@ -109,7 +109,7 @@ public abstract class AbstractPiece implements Pieces {
     public final boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
                                   boolean isCastlingPossible) {
 
-        Deplacement dep = new Deplacement(new Coord(getX(), getY()),new Coord(xFinal,yFinal), premierCoup);
+        Deplacement dep = new Deplacement(new Coord(getX(), getY()),new Coord(xFinal,yFinal), premierCoup, isCatchOk, isCastlingPossible);
         MoveStrategy move = MoveStrategyFactory.getInstance().create(this.getClass(), dep);
         return move.isMoveOk(dep);
     }
