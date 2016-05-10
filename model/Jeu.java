@@ -1,6 +1,8 @@
 package model;
 
 
+import model.pieces.PieceIHM;
+import model.pieces.Pieces;
 import tools.ChessPiecesFactory;
 
 import java.util.ArrayList;

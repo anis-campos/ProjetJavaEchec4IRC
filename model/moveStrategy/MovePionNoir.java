@@ -1,6 +1,6 @@
-package model.tempest;
+package model.moveStrategy;
 
-import model.AbstractPiece;
+import model.pieces.AbstractPiece;
 
 public class MovePionNoir extends MovePion{
 

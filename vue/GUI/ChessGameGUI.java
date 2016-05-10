@@ -2,7 +2,7 @@ package vue.GUI;
 
 import controler.ChessGameControlers;
 import model.Coord;
-import model.PieceIHM;
+import model.pieces.PieceIHM;
 import vue.AbstractView;
 
 import javax.swing.*;

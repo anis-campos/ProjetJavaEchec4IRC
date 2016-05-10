@@ -1,7 +1,7 @@
 package model.observe.notification;
 
 import model.Coord;
-import model.PieceIHM;
+import model.pieces.PieceIHM;
 
 import java.util.List;
 

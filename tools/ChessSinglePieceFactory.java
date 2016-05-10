@@ -4,7 +4,7 @@ package tools;
 
 import model.Coord;
 import model.Couleur;
-import model.Pieces;
+import model.pieces.Pieces;
 
 /**
  * @author francoise.perrin

@@ -1,7 +1,7 @@
 package vue.GUI;
 
 import model.Coord;
-import model.PieceIHM;
+import model.pieces.PieceIHM;
 import tools.ChessImageProvider;
 
 import javax.swing.*;
