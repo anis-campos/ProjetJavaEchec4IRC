@@ -3,9 +3,9 @@ package model.tempest;
 import model.AbstractPiece;
 import model.Coord;
 
-public class MoveRoi extends AbstractMoveStrategy{
+public class MoveFou extends AbstractMoveStrategy{
 
-	public MoveRoi(Class<? extends AbstractPiece> type, Coord init) {
+	public MoveFou(Class<? extends AbstractPiece> type, Coord init) {
 		super(type, init);
 	}
 
@@ -14,13 +14,11 @@ public class MoveRoi extends AbstractMoveStrategy{
             boolean isCastlingPossible) {
 		boolean ret = false;
 		
-		if ((Math.abs(yFinal - this.init.y) <= 1)
-				&& (Math.abs(xFinal - this.init.x) <= 1)) {
-			ret = true;
-		}
-		
+		if (Math.abs(yFinal - this.init.y) == Math.abs(xFinal - this.init.x)) {
+			ret  = true;
+		}		
 		
 		return ret;
 	}
-	
+
 }

@@ -11,7 +11,8 @@ public class MoveCavalier extends AbstractMoveStrategy{
 	}
 
 	@Override
-	public boolean isMoveOkStandard(int xFinal, int yFinal) {
+	public boolean isMoveOkStandard(int xFinal, int yFinal, boolean isCatchOk,
+            boolean isCastlingPossible) {
 		boolean ret = false;
 		
 		if ((Math.abs(xFinal - this.init.x) + Math.abs(yFinal - this.init.y)) == 3) {
@@ -20,7 +21,7 @@ public class MoveCavalier extends AbstractMoveStrategy{
 				ret  = true;
 			}		
 		}	
-		return false;
+		return ret;
 	}
 
 }

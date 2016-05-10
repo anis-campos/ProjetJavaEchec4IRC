@@ -12,6 +12,7 @@ public abstract class AbstractPiece implements Pieces {
 
 	private int x, y;
 	private Couleur couleur;
+	private boolean premierCoup;
 	
 
 	/**
@@ -23,6 +24,7 @@ public abstract class AbstractPiece implements Pieces {
 		this.x = coord.x;
 		this.y = coord.y;
 		this.couleur=couleur;
+		this.premierCoup=true;
 	}
 
 	/* (non-Javadoc)

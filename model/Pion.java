@@ -18,34 +18,6 @@ abstract class Pion extends AbstractPiece {
         this.premierCoup = true;
     }
 
-    /* (non-Javadoc)
-     * @see model.AbstractPiece#isMoveOk(int, int)
-     */
-    @Override
-    public boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
-                            boolean isCastlingPossible) {
-
-        boolean ret = false;
-
-        // Déplacement vertical
-        if (!isCatchOk && !isCastlingPossible) {
-
-            if ((xFinal == this.getX())
-                    && (Math.abs(yFinal - this.getY()) <= 1 ||
-                    (Math.abs(yFinal - this.getY()) <= 2 && this.premierCoup == true))) {
-
-                ret = isVertiacalOk(yFinal);
-            }
-        }
-        // Déplacement diagonal
-        else {
-            ret = isDiagonalOk(xFinal, yFinal);
-        }
-
-        return ret;
-    }
-
-
     protected abstract boolean isVertiacalOk(int yFinal);
 
     protected abstract boolean isDiagonalOk(int xFinal, int yFinal);
