@@ -22,6 +22,7 @@ public interface ChessGameControlers {
 	 */
 	boolean isEnd();
 
+
 	/**
 	 * @param initCoord
 	 * @return une info dont la vue se servira 

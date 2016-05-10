@@ -106,4 +106,9 @@ public class ChessGameCmdLine extends AbstractView {
     public void start() {
 
     }
+
+    @Override
+    public void highlight(List<Coord> patern) {
+
+    }
 }

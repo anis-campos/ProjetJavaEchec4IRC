@@ -15,6 +15,6 @@ public class IllegalMoveViewUpdater extends AbstractViewUpdater<IllegalMoveNotif
 
     @Override
     public void run() {
-        vue.undoMove();
+        vue.display(notification.etatJeu);
     }
 }

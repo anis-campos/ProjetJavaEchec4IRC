@@ -2,10 +2,7 @@ package model;
 
 import model.observe.IObserver;
 import model.observe.Observable;
-import model.observe.notification.EchecNotification;
-import model.observe.notification.IllegalMoveNotification;
-import model.observe.notification.MoveNotification;
-import model.observe.notification.StartNotification;
+import model.observe.notification.*;
 
 /**
  * Created by Anis on 29/04/2016.
@@ -56,6 +53,10 @@ public class ChessGame extends Observable {
     }
 
     public boolean isPlayerOK(Coord pieceCoord) {
+
+        if(echiquier.isPlayerOk(pieceCoord))
+            notifyObservers(new HighlightNotification(pieceCoord, echiquier.getPatern(pieceCoord)));
+
         return echiquier.isPlayerOk(pieceCoord);
     }
 }

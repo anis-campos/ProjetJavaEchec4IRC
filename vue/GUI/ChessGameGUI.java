@@ -128,6 +128,11 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     }
 
     @Override
+    public void highlight(List<Coord> patern) {
+        damier.highlightSquares(patern);
+    }
+
+    @Override
     public void mouseClicked(MouseEvent e) {
 
     }

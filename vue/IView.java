@@ -23,4 +23,6 @@ public interface IView {
     void End();
 
     void start();
+
+    void highlight(List<Coord> patern);
 }

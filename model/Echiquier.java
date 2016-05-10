@@ -12,6 +12,7 @@ package model;
 
 import model.pieces.PieceIHM;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -398,5 +399,19 @@ public class Echiquier implements BoardGames {
 
     public boolean isEchec() {
         return false;
+    }
+
+    public List<Coord> getPatern(Coord piece) {
+        List<Coord> rep = new ArrayList<>();
+        this.isPieceToMoveOk = jeuCourant.isPieceHere(piece.x, piece.y);
+        for (int i = 0; i < 64; i++) {
+            Coord coord = new Coord(i / 8, i % 8);
+            System.out.println(coord);
+            if (isMoveLegal(piece.x, piece.y, coord.x, coord.y))
+                rep.add(coord);
+        }
+        System.out.println("Taille du pattern : " + rep.size());
+
+        return rep;
     }
 }
