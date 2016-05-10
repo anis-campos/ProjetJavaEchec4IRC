@@ -2,8 +2,18 @@ package model.moveStrategy;
 
 public class MoveReine implements MoveStrategy {
 
-	public MoveReine() {
+	private static MoveReine instance;
+
+	private MoveReine() {
 	}
+
+
+	public static MoveReine getInstance() {
+		if (instance == null)
+			instance = new MoveReine();
+		return instance;
+	}
+
 
 	@Override
 	public boolean isMoveOk(Deplacement dep) {
