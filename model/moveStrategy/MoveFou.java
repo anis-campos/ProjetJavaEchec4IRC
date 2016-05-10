@@ -2,8 +2,18 @@ package model.moveStrategy;
 
 public class MoveFou implements MoveStrategy {
 
-    public MoveFou() {
-    }
+	private static MoveFou instance;
+	
+	private MoveFou() {
+	}
+	
+	public static MoveFou getInstance(){
+		if (instance == null) {
+            instance = new MoveFou();
+        }
+
+        return instance;
+	}
 
     @Override
     public boolean isMoveOk(Deplacement dep) {
