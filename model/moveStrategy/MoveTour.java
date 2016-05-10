@@ -1,22 +1,17 @@
 package model.moveStrategy;
 
-import model.pieces.AbstractPiece;
+public class MoveTour implements MoveStrategy {
 
-public class MoveTour extends AbstractMoveStrategy {
 
-	public MoveTour(Class<? extends AbstractPiece> type, Deplacement dep) {
-		super(type, dep);
-	}
+    @Override
+    public boolean isMoveOk(Deplacement dep) {
+        boolean ret = false;
 
-	@Override
-	public boolean isMoveOk(Deplacement dep) {
-		boolean ret = false;
-		
-		if ((yFinal == init.y) || (xFinal == init.x)) {
-			ret = true;
-		}
-		
-		return ret;
-	}
+        if ((dep.cFinal.y == dep.cInit.y) || (dep.cFinal.x == dep.cInit.x)) {
+            ret = true;
+        }
+
+        return ret;
+    }
 
 }

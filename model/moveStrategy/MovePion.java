@@ -1,32 +1,32 @@
 package model.moveStrategy;
 
-import model.pieces.AbstractPiece;
-
 public abstract class MovePion implements MoveStrategy {
 
+    protected Deplacement dep;
 
-	@Override
-	public boolean isMoveOk(Deplacement dep) {
-		boolean ret = false;
+    @Override
+    public boolean isMoveOk(Deplacement dep) {
+        this.dep = dep;
+        boolean ret = false;
 
         // Déplacement vertical
         if (!dep.isCatchOk && !dep.isCastlingPossible) {
 
             if ((dep.cFinal.x == dep.cInit.x)
-                    && (Math.abs(yFinal - this.init.y) <= 1 ||
-                    (Math.abs(yFinal - this.init.y) <= 2 && this.premierCoup == true))) {
+                    && (Math.abs(dep.cFinal.y - dep.cInit.y) <= 1 ||
+                    (Math.abs(dep.cFinal.y - dep.cInit.y) <= 2 && dep.premierCoup == true))) {
 
-                ret = isVertiacalOk(yFinal);
+                ret = isVertiacalOk(dep.cFinal.y);
             }
         }
         // Déplacement diagonal
         else {
-            ret = isDiagonalOk(xFinal, yFinal);
+            ret = isDiagonalOk(dep.cFinal.x, dep.cFinal.y);
         }
 
         return ret;
-        
-	}
+
+    }
 
 
     protected abstract boolean isVertiacalOk(int yFinal);
