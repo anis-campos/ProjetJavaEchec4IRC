@@ -2,9 +2,19 @@ package model.moveStrategy;
 
 public class MovePionBlanc extends MovePion {
 
-    public MovePionBlanc() {
-    }
+	private static MovePionBlanc instance;
+	
+	private MovePionBlanc() {
+	}
+	
+	public static MovePionBlanc getInstance(){
+		if (instance == null) {
+            instance = new MovePionBlanc();
+        }
 
+        return instance;
+	}
+	
     @Override
     protected boolean isVertiacalOk(int yFinal) {
         return yFinal - this.dep.cInit.y < 0;

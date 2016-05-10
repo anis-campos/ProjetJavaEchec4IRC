@@ -6,7 +6,7 @@ import tools.Introspection2;
 /**
  * Created by Anis on 10/05/2016.
  */
-public class MoveStrategyFactory {
+public class MoveStrategyFactory implements IMoveStrategyFactory{
 
     private static MoveStrategyFactory instance;
 
