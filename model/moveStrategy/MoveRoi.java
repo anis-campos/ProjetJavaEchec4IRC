@@ -1,16 +1,15 @@
-package model.tempest;
+package model.moveStrategy;
 
-import model.AbstractPiece;
+import model.pieces.AbstractPiece;
 
-public class MoveRoi extends AbstractMoveStrategy{
+public class MoveRoi extends AbstractMoveStrategy {
 
 	public MoveRoi(Class<? extends AbstractPiece> type, Deplacement dep) {
 		super(type, dep);
 	}
 
 	@Override
-	public boolean isMoveOkStandard(int xFinal, int yFinal, boolean isCatchOk,
-            boolean isCastlingPossible) {
+	public boolean isMoveOk(Deplacement dep) {
 		boolean ret = false;
 		
 		if ((Math.abs(yFinal - this.init.y) <= 1)

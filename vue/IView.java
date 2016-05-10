@@ -1,7 +1,7 @@
 package vue;
 
 import model.Coord;
-import model.PieceIHM;
+import model.pieces.PieceIHM;
 
 import java.util.List;
 

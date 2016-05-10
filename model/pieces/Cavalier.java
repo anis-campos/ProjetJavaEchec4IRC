@@ -1,6 +1,8 @@
-package model;
+package model.pieces;
 
 
+import model.Coord;
+import model.Couleur;
 
 /**
  * @author francoise.perrin
@@ -10,11 +12,10 @@ public class Cavalier extends AbstractPiece  {
 	
 
 	/**
-	 * @param name
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public Cavalier( Couleur couleur_de_piece, Coord coord) {
+	public Cavalier(Couleur couleur_de_piece, Coord coord) {
 		super(couleur_de_piece, coord);
 	}
 }

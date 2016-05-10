@@ -1,5 +1,8 @@
-package model;
+package model.pieces;
 
+
+import model.Coord;
+import model.Couleur;
 
 /**
  * @author francoise.perrin

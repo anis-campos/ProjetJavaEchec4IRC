@@ -1,22 +1,18 @@
-package model.tempest;
+package model.moveStrategy;
 
-import model.AbstractPiece;
+import model.pieces.AbstractPiece;
 
-public abstract class MovePion extends AbstractMoveStrategy {
+public abstract class MovePion implements MoveStrategy {
 
-	public MovePion(Class<? extends AbstractPiece> type, Deplacement dep) {
-		super(type, dep);
-	}
 
 	@Override
-	public boolean isMoveOkStandard(int xFinal, int yFinal, boolean isCatchOk,
-            boolean isCastlingPossible) {
+	public boolean isMoveOk(Deplacement dep) {
 		boolean ret = false;
 
         // Déplacement vertical
-        if (!isCatchOk && !isCastlingPossible) {
+        if (!dep.isCatchOk && !dep.isCastlingPossible) {
 
-            if ((xFinal == this.init.x)
+            if ((dep.cFinal.x == dep.cInit.x)
                     && (Math.abs(yFinal - this.init.y) <= 1 ||
                     (Math.abs(yFinal - this.init.y) <= 2 && this.premierCoup == true))) {
 

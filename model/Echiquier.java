@@ -10,6 +10,8 @@ package model;
  * C'est elle qui gére toute la logique métier des déplacements </p>
  */
 
+import model.pieces.PieceIHM;
+
 import java.util.List;
 
 /**
