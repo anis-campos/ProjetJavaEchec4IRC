@@ -1,11 +1,11 @@
 package tools;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import model.Coord;
 import model.Couleur;
 import model.pieces.Pieces;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author francoise.perrin
@@ -38,7 +38,7 @@ public class ChessPiecesFactory {
 
 				if (pieceCouleur.equals(ChessPiecePos.values()[i].couleur)) {
 					for (int j = 0; j < (ChessPiecePos.values()[i].coords).length; j++) {
-						String className = "model." + ChessPiecePos.values()[i].nom;	// attention au chemin
+						String className = "model.pieces." + ChessPiecePos.values()[i].nom;	// attention au chemin
 						Coord pieceCoord = ChessPiecePos.values()[i].coords[j];
 						pieces.add((Pieces) Introspection.newInstance (className,
 								new Object[] {pieceCouleur, pieceCoord}));

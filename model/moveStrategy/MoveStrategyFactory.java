@@ -29,7 +29,7 @@ public class MoveStrategyFactory {
     public MoveStrategy create(Class<? extends AbstractPiece> type) {
         String pieceName = type.getSimpleName();
 
-        String MoveStrategyName = "model.tempest.Move" + pieceName;
+        String MoveStrategyName = "model.moveStrategy.Move" + pieceName;
 
         MoveStrategy rep = null;
         try {
