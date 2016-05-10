@@ -5,5 +5,6 @@ package model.tempest;
  */
 public interface MoveStrategy {
 
-    boolean isMoveOk(int xFinal,  int yFinal);
+    boolean isMoveOkStandard(int xFinal,  int yFinal);
+    boolean isMoveOkTempest(int xFinal, int yFinal);
 }

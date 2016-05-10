@@ -99,8 +99,10 @@ public abstract class AbstractPiece implements Pieces {
 	 * En fonction du type de pièce (Pion, etc.)
 	 * est capable de dire si le déplacement est OK
 	 */
-	public abstract boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
-			boolean isCastlingPossible) ;
+	public final boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
+			boolean isCastlingPossible){
+		return false;
+	}
 
 }
 
