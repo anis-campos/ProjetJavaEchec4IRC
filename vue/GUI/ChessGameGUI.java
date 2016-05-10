@@ -148,6 +148,12 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
             Coord initCoord = this.damier.getCoord(this.pieceToMoveSquare);
 
+            if(!this.chessGameControler.isPlayerOK(initCoord)){
+            	this.pieceToMove = null;
+            	this.pieceToMoveSquare = null;
+            	return;
+            }
+            
             // avant de d�placer la pi�ce, on en positionne un clone invisible
             // au m�me endroit : cela servira lors du rafraichissement de la fen�tre (update)
             sauvPieceToMove = new JLabel(this.pieceToMove.getIcon());
