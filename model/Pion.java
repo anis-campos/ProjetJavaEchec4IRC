@@ -18,10 +18,6 @@ abstract class Pion extends AbstractPiece {
         this.premierCoup = true;
     }
 
-    protected abstract boolean isVertiacalOk(int yFinal);
-
-    protected abstract boolean isDiagonalOk(int xFinal, int yFinal);
-
     /* (non-Javadoc)
      * @see model.AbstractPiece#move(int, int)
      */

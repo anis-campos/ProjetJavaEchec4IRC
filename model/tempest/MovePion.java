@@ -3,7 +3,7 @@ package model.tempest;
 import model.AbstractPiece;
 import model.Coord;
 
-public class MovePion extends AbstractMoveStrategy {
+public abstract class MovePion extends AbstractMoveStrategy {
 
 	public MovePion(Class<? extends AbstractPiece> type, Coord init) {
 		super(type, init);
@@ -32,5 +32,11 @@ public class MovePion extends AbstractMoveStrategy {
         return ret;
         
 	}
+
+
+    protected abstract boolean isVertiacalOk(int yFinal);
+
+    protected abstract boolean isDiagonalOk(int xFinal, int yFinal);
+
 
 }
