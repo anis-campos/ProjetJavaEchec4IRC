@@ -1,7 +1,6 @@
 package model.tempest;
 
 import model.AbstractPiece;
-import model.Coord;
 import tools.Introspection2;
 
 /**
@@ -10,15 +9,18 @@ import tools.Introspection2;
 public class MoveStrategyFactory {
 
     //Cacher le constructeur
-    private MoveStrategyFactory(){};
+    private MoveStrategyFactory() {
+    }
 
-    public static MoveStrategy create(Class<? extends AbstractPiece> type, Coord init) {
+
+
+    public static MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement dep) {
         String pieceName = type.getSimpleName();
 
-        String MoveStrategyName = "model.tempest.Move"+pieceName;
+        String MoveStrategyName = "model.tempest.Move" + pieceName;
 
         try {
-            MoveStrategy moveStrategy = (MoveStrategy) Introspection2.newInstance(MoveStrategyName, type, init);
+            MoveStrategy moveStrategy = (MoveStrategy) Introspection2.newInstance(MoveStrategyName, type, dep);
             return moveStrategy;
         } catch (InstantiationException e) {
             e.printStackTrace();

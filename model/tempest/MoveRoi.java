@@ -1,12 +1,11 @@
 package model.tempest;
 
 import model.AbstractPiece;
-import model.Coord;
 
 public class MoveRoi extends AbstractMoveStrategy{
 
-	public MoveRoi(Class<? extends AbstractPiece> type, Coord init) {
-		super(type, init);
+	public MoveRoi(Class<? extends AbstractPiece> type, Deplacement dep) {
+		super(type, dep);
 	}
 
 	@Override
