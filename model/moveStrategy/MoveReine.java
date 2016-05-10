@@ -2,18 +2,14 @@ package model.moveStrategy;
 
 import model.pieces.AbstractPiece;
 
-public class MoveReine extends AbstractMoveStrategy {
-
-	public MoveReine(Class<? extends AbstractPiece> type, Deplacement dep) {
-		super(type, dep);
-	}
+public class MoveReine implements MoveStrategy {
 
 	@Override
 	public boolean isMoveOk(Deplacement dep) {
 		boolean ret = false;
 	
-	if (Math.abs(yFinal - this.init.y) == Math.abs(xFinal - this.init.x)
-			|| ((yFinal == this.init.y) || (xFinal == this.init.x))) {
+	if (Math.abs(dep.cFinal.y - dep.cInit.y) == Math.abs(dep.cFinal.x - dep.cInit.x)
+			|| ((dep.cFinal.y == dep.cInit.y) || (dep.cFinal.x == dep.cInit.x))) {
 		ret =  true;
 	}
 	
