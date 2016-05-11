@@ -1,5 +1,7 @@
 package model.moveStrategy;
 
+import model.common.Deplacement;
+
 public class MoveTour implements MoveStrategy {
 
     private static MoveTour instance;

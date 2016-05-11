@@ -1,4 +1,4 @@
-package model;
+package model.game;
 
 
 
@@ -18,7 +18,7 @@ public interface Game  {
 	 * @param y
 	 * @return true si une pièce se trouve aux coordonnées indiquées
 	 */
-	public boolean isPieceHere(int x, int y) ;
+	boolean isPieceHere(int x, int y);
 
 	/**
 	 * @param xInit
@@ -28,8 +28,8 @@ public interface Game  {
 	 * @return true si  piece du jeu peut être déplacée aux coordonnées finales,
 	 *  false sinon
 	 */
-	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal, boolean isCatchOk,
-			boolean isCastlingPossible);
+	boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal, boolean isCatchOk,
+					 boolean isCastlingPossible);
 
 	/**
 	 * @param xInit
@@ -38,7 +38,7 @@ public interface Game  {
 	 * @param yFinal
 	 * @return true si déplacement pièce effectué
 	 */
-	public boolean move(int xInit, int yInit, int xFinal, int yFinal) ;
+	boolean move(int xInit, int yInit, int xFinal, int yFinal);
 
 
 	/**
@@ -47,7 +47,7 @@ public interface Game  {
 	 * @return true si la piece aux coordonnées finales
 	 * a été capturée
 	 */
-	public boolean capture(int xCatch, int yCatch) ;
+	boolean capture(int xCatch, int yCatch);
 
 
 

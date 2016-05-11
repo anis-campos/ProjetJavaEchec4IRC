@@ -1,8 +1,8 @@
 package vue.GUI;
 
 import controler.ChessGameControlers;
-import model.Coord;
 import model.moveStrategy.MoveStrategyType;
+import model.common.Coord;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
 
@@ -129,6 +129,11 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     @Override
     public void start() {
         frame.setVisible(true);
+    }
+
+    @Override
+    public void highlight(List<Coord> patern) {
+        damier.highlightSquares(patern);
     }
 
     @Override

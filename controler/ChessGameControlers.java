@@ -1,6 +1,6 @@
 package controler;
 
-import model.Coord;
+import model.common.Coord;
 
 public interface ChessGameControlers {
 
@@ -21,6 +21,7 @@ public interface ChessGameControlers {
 	 * @return true si fin de partie OK (echec et mat, pat, etc.)
 	 */
 	boolean isEnd();
+
 
 	/**
 	 * @param initCoord

@@ -1,7 +1,8 @@
 package model.moveStrategy;
 
+import model.common.Deplacement;
 import model.pieces.AbstractPiece;
 
 public interface IMoveStrategyFactory {
-	public MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement);
+	MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement);
 }

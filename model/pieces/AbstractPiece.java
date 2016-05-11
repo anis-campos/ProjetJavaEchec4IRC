@@ -1,9 +1,12 @@
 package model.pieces;
 
 
-import model.Coord;
-import model.Couleur;
-import model.moveStrategy.*;
+import model.common.Coord;
+import model.common.Couleur;
+import model.common.Deplacement;
+import model.moveStrategy.AbstractMoveFactory;
+import model.moveStrategy.IMoveStrategyFactory;
+import model.moveStrategy.MoveStrategy;
 
 /**
  * @author francoise.perrin
@@ -106,7 +109,8 @@ public abstract class AbstractPiece implements Pieces {
     public final boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk,
                                   boolean isCastlingPossible) {
 
-        Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible);
+        Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal),
+                premierCoup, isCatchOk, isCastlingPossible);
 
         IMoveStrategyFactory factory = AbstractMoveFactory.getInstance().getFactory();
 

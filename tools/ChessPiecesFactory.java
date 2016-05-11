@@ -1,7 +1,7 @@
 package tools;
 
-import model.Coord;
-import model.Couleur;
+import model.common.Coord;
+import model.common.Couleur;
 import model.pieces.Pieces;
 
 import java.util.LinkedList;

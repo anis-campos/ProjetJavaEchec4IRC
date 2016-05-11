@@ -1,6 +1,6 @@
 package tools;
 
-import model.Couleur;
+import model.common.Couleur;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;

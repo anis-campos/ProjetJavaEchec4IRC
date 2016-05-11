@@ -1,9 +1,6 @@
 package vue.viewUpdater;
 
-import model.observe.notification.IllegalMoveNotification;
-import model.observe.notification.MoveNotification;
-import model.observe.notification.Notification;
-import model.observe.notification.StartNotification;
+import model.observe.notification.*;
 
 import java.util.HashMap;
 
@@ -20,6 +17,7 @@ public class ViewUpdaterFactory {
         map.put(MoveNotification.class, new ViewUpdater<MoveNotification>());
         map.put(StartNotification.class, new ViewUpdater<StartNotification>());
         map.put(IllegalMoveNotification.class, new ViewUpdater<IllegalMoveNotification>());
+        map.put(HighlightNotification.class, new ViewUpdater<HighlightNotification>());
 
         return map;
     }

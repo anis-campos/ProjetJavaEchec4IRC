@@ -1,6 +1,6 @@
 package model.pieces;
 
-import model.Couleur;
+import model.common.Couleur;
 
 /**
  * @author francoise.perrin
@@ -11,23 +11,23 @@ public interface Pieces {
 	/**
 	 * @return indice de la colonne où est positionnée la piece
 	 */
-	public int getX();
+	int getX();
 	
 	/**
 	 * @return indice de la ligne où est positionnée la piece
 	 */
-	public int getY();
+	int getY();
 	
 	/**
 	 * @return couleur de la piece
 	 */
-	public Couleur getCouleur();
+	Couleur getCouleur();
 	
 	/**
 	 * @return le nom de la pièce (Tour, Cavalier, etc.)
 	 * attention le type ne correspond pas forcément au nom de la classe
 	 */
-	public String getName();
+	String getName();
 
 	/**
 	 * @param xFinal
@@ -37,19 +37,19 @@ public interface Pieces {
 	 * @return true si déplacement légal en fonction des algo
 	 * de déplacement spécifique de chaque pièce
 	 */
-	public  boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible) ;
+	boolean isMoveOk(int xFinal, int yFinal, boolean isCatchOk, boolean isCastlingPossible);
 	
 	/**
 	 * @param xFinal
 	 * @param yFinal
 	 * @return true si d�placement effectu�
 	 */
-	public boolean move(int xFinal, int yFinal);
+	boolean move(int xFinal, int yFinal);
 	
 	/** 
 	 * @return true si piece effectivement captur�e
 	 * Positionne x et y à -1
 	 */
-	public boolean capture();
-};
+	boolean capture();
+}
 

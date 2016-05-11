@@ -1,5 +1,7 @@
 package model.moveStrategy;
 
+import model.common.Deplacement;
+
 public class MoveCavalier implements MoveStrategy {
 
 	private static MoveCavalier instance;

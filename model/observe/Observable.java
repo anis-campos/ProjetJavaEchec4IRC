@@ -54,8 +54,6 @@ public abstract class Observable {
 
     }
 
-    ;
-
     /**
      * Supprimer un observeur
      *

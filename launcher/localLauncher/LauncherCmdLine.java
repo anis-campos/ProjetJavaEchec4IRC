@@ -2,7 +2,7 @@ package launcher.localLauncher;
 
 import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
-import model.ChessGame;
+import model.game.ChessGame;
 import vue.ChessGameCmdLine;
 
 
