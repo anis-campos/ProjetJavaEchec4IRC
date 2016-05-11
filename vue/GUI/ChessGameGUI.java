@@ -149,7 +149,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     public void mousePressed(MouseEvent e) {
         Point pieceToMoveLocation = null;
 
-        Component c = this.damier.findComponentAt(e.getX() - 10, e.getY() - 30);
+        Component c = this.damier.findComponentAt(e.getX() - 10, e.getY() - 60);
 
         this.pieceToMove = null;
 

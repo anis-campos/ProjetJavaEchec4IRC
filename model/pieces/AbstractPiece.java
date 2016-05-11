@@ -71,6 +71,7 @@ public abstract class AbstractPiece implements Pieces {
             this.x = x;
             this.y = y;
             ret = true;
+            premierCoup = false;
         }
         return ret;
 
@@ -117,6 +118,7 @@ public abstract class AbstractPiece implements Pieces {
         if (factory != null) {
             MoveStrategy move = factory.create(this.getClass(), new Deplacement(
                     new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
+            
             return move.isMoveOk(dep);
         }
         return false;
