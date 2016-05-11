@@ -2,6 +2,7 @@ package controler.controlerLocal;
 
 import controler.ChessGameControlers;
 import model.game.ChessGame;
+import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
 
 /**
@@ -40,4 +41,9 @@ public class ChessGameControler implements ChessGameControlers {
     public boolean isPlayerOK(Coord initCoord) {
         return model.isPlayerOK(initCoord);
     }
+
+	@Override
+	public void changeMode(GameMode mode) {
+		this.model.changeMode(mode);
+	}
 }

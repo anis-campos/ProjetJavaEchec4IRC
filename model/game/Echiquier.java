@@ -12,6 +12,7 @@ package model.game;
 
 import model.common.Coord;
 import model.common.Couleur;
+import model.moveStrategy.MoveStrategyType;
 import model.pieces.PieceIHM;
 
 import java.util.ArrayList;

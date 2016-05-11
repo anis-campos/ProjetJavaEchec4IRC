@@ -2,6 +2,7 @@ package model.game;
 
 import model.common.Coord;
 import model.common.Couleur;
+import model.moveStrategy.MoveStrategyType;
 import model.observe.IObserver;
 import model.observe.Observable;
 import model.observe.notification.*;

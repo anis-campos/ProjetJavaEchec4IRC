@@ -37,7 +37,6 @@ public class Menu{
 			if(i == 0)
 				rbMenuItem.setSelected(true);
 			
-			rbMenuItem.addActionListener(changeListener);
 			group.add(rbMenuItem);
 			menuMode.add(rbMenuItem);
 		}
@@ -48,14 +47,10 @@ public class Menu{
 	public JMenuBar getMenuBar(){
 		return menuBar;
 	}
-	
-	private ActionListener changeListener = new ActionListener() {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			IView parent = (IView) SwingUtilities.getWindowAncestor(menuBar);
-			parent.changeMode(Enum.valueOf(MoveStrategyType.class,e.getActionCommand()));			
+	public void setListener(ActionListener changeListener) {
+		for(int i = 0 ; i < ((JMenu)menuBar.getMenu(0)).getItemCount() ; i++){
+			((JMenu)menuBar.getMenu(0)).getItem(i).addActionListener(changeListener);
 		}
-		
-	};
+	}
 }

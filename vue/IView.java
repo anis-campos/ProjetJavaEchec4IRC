@@ -25,7 +25,7 @@ public interface IView {
 
     void start();
     
-    void changeMode(MoveStrategyType mode);
+    void changeMode(GameMode mode);
 
     void highlight(List<Coord> patern);
 }

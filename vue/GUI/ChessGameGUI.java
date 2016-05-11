@@ -5,9 +5,12 @@ import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
+import vue.IView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -79,6 +82,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         frame.setLocation(600, 10);
         
         Menu menu = new Menu();
+        menu.setListener(changeListener);
         frame.setJMenuBar(menu.getMenuBar());
 
 
@@ -236,9 +240,17 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     }
 
-	@Override
-	public void changeMode(MoveStrategyType mode) {
-		System.out.println("ccoucou ça marche:!!!!!!!!!!!!");
+    private ActionListener changeListener = new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			changeMode(Enum.valueOf(MoveStrategyType.class,e.getActionCommand()));			
+		}
 		
+	};
+    
+	@Override
+	public void changeMode(GameMode mode) {
+		this.chessGameControler.changeMode(mode);		
 	}
 }

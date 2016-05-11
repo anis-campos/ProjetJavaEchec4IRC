@@ -1,6 +1,7 @@
 package controler;
 
 import model.common.Coord;
+import model.moveStrategy.MoveStrategyType;
 
 public interface ChessGameControlers {
 
@@ -29,6 +30,8 @@ public interface ChessGameControlers {
 	 * pour empêcher tout déplacement sur le damier
 	 */
 	boolean isPlayerOK(Coord initCoord);
+	
+	void changeMode(GameMode mode);
 
 
 
