@@ -19,18 +19,12 @@ public class Jeu implements Game {
      *
      */
     private static final long serialVersionUID = 1L;
-
-    protected List<Pieces> pieces;
-    protected Couleur couleur;
-
     // Toutes les variables suivantes sont partagées
     // entre les 2 instances de jeu (noir et blanc)
     private static boolean isMoveOk;
     private static boolean isPieceToCatch;
     private static boolean isLastPion;
     private static boolean isPromotion;
-    private boolean isCastling;
-
     // en cas d'annulation si le déplacement met le roi en échec
     private static Pieces pieceToMoveUndo;
     private static int xInitUndo;
@@ -38,6 +32,9 @@ public class Jeu implements Game {
     private static Pieces pieceToCatchUndo;
     private static int xFinalUndo;
     private static int yFinalUndo;
+    protected List<Pieces> pieces;
+    protected Couleur couleur;
+    private boolean isCastling;
 
 
     /**
@@ -115,10 +112,7 @@ public class Jeu implements Game {
             yInitUndo = yInit;
 
             // Pour anticiper la promotion du pion
-            isLastPion = false;
-            if (pieceToMove.getName().startsWith("Pion")) {
-                isLastPion = true;
-            }
+            isLastPion = pieceToMove.getName().startsWith("Pion");
         }
 
 

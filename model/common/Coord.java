@@ -20,14 +20,6 @@ public class Coord implements Serializable {
 		this.y = y;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "[x=" + x + ", y=" + y + "]";
-	}
-	
 	/**
 	 * @param x
 	 * @param y
@@ -35,6 +27,14 @@ public class Coord implements Serializable {
 	 */
 	public static boolean coordonnees_valides(int x, int y){
 		return ( (x<=7) && (x>=0) && (y<=7) && (y>=0) );
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "[x=" + x + ", y=" + y + "]";
 	}
 
 	/* (non-Javadoc)
@@ -63,8 +63,6 @@ public class Coord implements Serializable {
 		Coord other = (Coord) obj;
 		if (x != other.x)
 			return false;
-		if (y != other.y)
-			return false;
-		return true;
+		return y == other.y;
 	}
 }

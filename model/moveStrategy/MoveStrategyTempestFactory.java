@@ -1,5 +1,6 @@
 package model.moveStrategy;
 
+import model.common.Deplacement;
 import model.pieces.AbstractPiece;
 import tools.Introspection;
 

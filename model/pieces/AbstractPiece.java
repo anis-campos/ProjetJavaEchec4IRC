@@ -3,7 +3,10 @@ package model.pieces;
 
 import model.common.Coord;
 import model.common.Couleur;
-import model.moveStrategy.*;
+import model.common.Deplacement;
+import model.moveStrategy.AbstractMoveFactory;
+import model.moveStrategy.IMoveStrategyFactory;
+import model.moveStrategy.MoveStrategy;
 
 /**
  * @author francoise.perrin
