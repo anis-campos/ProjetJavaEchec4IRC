@@ -1,6 +1,7 @@
-package model;
+package model.game;
 
 
+import model.common.Couleur;
 import model.pieces.PieceIHM;
 import model.pieces.Pieces;
 import tools.ChessPiecesFactory;

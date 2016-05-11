@@ -1,6 +1,6 @@
 package controler;
 
-import model.Coord;
+import model.common.Coord;
 
 public interface ChessGameControlers {
 

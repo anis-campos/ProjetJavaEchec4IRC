@@ -2,7 +2,7 @@ package launcher.localLauncher;
 
 import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
-import model.ChessGame;
+import model.game.ChessGame;
 import vue.AbstractView;
 import vue.GUI.ChessGameGUI;
 
@@ -31,7 +31,7 @@ public class LauncherGUI {
 		chessGame = new ChessGame();	
 		chessGameControler = new ChessGameControler(chessGame);
 
-		AbstractView frame = new ChessGameGUI("Jeu d'échec", chessGameControler,  dim);
+		AbstractView frame = new ChessGameGUI("Jeu d'ï¿½chec", chessGameControler,  dim);
 
 		chessGame.addObserver(frame);
 		

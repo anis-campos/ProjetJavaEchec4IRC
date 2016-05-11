@@ -1,6 +1,6 @@
 package model.moveStrategy;
 
-import model.Coord;
+import model.common.Coord;
 
 /**
  * Created by Anis on 10/05/2016.

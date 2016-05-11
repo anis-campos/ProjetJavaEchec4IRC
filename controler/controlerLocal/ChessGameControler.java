@@ -1,8 +1,8 @@
 package controler.controlerLocal;
 
 import controler.ChessGameControlers;
-import model.ChessGame;
-import model.Coord;
+import model.game.ChessGame;
+import model.common.Coord;
 
 /**
  * Created by Anis on 27/04/2016.

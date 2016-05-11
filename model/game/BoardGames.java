@@ -1,5 +1,7 @@
-package model;
+package model.game;
 
+
+import model.common.Couleur;
 
 /**
  * @author francoise.perrin

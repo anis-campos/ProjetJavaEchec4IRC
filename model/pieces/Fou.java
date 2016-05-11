@@ -1,8 +1,8 @@
 package model.pieces;
 
 
-import model.Coord;
-import model.Couleur;
+import model.common.Coord;
+import model.common.Couleur;
 
 /**
  * @author francoise.perrin

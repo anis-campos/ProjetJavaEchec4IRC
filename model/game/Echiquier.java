@@ -1,4 +1,4 @@
-package model;
+package model.game;
 
 
 /**
@@ -10,6 +10,8 @@ package model;
  * C'est elle qui gére toute la logique métier des déplacements </p>
  */
 
+import model.common.Coord;
+import model.common.Couleur;
 import model.pieces.PieceIHM;
 
 import java.util.ArrayList;

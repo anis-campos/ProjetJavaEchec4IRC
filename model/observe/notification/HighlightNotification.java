@@ -1,6 +1,6 @@
 package model.observe.notification;
 
-import model.Coord;
+import model.common.Coord;
 
 import java.util.List;
 

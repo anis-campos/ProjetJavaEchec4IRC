@@ -1,6 +1,6 @@
 package vue.GUI;
 
-import model.Coord;
+import model.common.Coord;
 import model.pieces.PieceIHM;
 import tools.ChessImageProvider;
 

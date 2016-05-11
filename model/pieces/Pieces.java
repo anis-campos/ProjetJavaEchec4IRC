@@ -1,6 +1,6 @@
 package model.pieces;
 
-import model.Couleur;
+import model.common.Couleur;
 
 /**
  * @author francoise.perrin

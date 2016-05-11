@@ -1,7 +1,7 @@
 package vue.GUI;
 
 import controler.ChessGameControlers;
-import model.Coord;
+import model.common.Coord;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
 

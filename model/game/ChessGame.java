@@ -1,5 +1,7 @@
-package model;
+package model.game;
 
+import model.common.Coord;
+import model.common.Couleur;
 import model.observe.IObserver;
 import model.observe.Observable;
 import model.observe.notification.*;
