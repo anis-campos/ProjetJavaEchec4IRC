@@ -1,10 +1,9 @@
-package model.moveStrategy;
+package model.configuration;
 
 /**
  * Created by Anis on 10/05/2016.
  */
-public enum MoveStrategyType
-{
+public enum GamMode {
     Standard,
     Tempest,
     Others

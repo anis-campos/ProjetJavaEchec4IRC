@@ -2,6 +2,8 @@ package launcher.localLauncher;
 
 import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
+import model.configuration.Configurator;
+import model.configuration.GamMode;
 import model.game.ChessGame;
 import vue.AbstractView;
 import vue.GUI.ChessGameGUI;
@@ -22,6 +24,8 @@ public class LauncherGUI {
 	 */
 	public static void main(String[] args) {
 
+		setContext();
+
 		ChessGame chessGame;
 		ChessGameControlers chessGameControler;
 		Dimension dim;
@@ -35,6 +39,12 @@ public class LauncherGUI {
 
 		chessGame.addObserver(frame);
 		
+
+	}
+
+	private static void setContext() {
+
+		Configurator.getInstance().setMode(GamMode.Standard);
 
 	}
 }

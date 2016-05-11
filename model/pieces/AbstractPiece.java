@@ -4,7 +4,7 @@ package model.pieces;
 import model.common.Coord;
 import model.common.Couleur;
 import model.common.Deplacement;
-import model.moveStrategy.AbstractMoveFactory;
+import model.configuration.FactoryManager;
 import model.moveStrategy.IMoveStrategyFactory;
 import model.moveStrategy.MoveStrategy;
 
@@ -112,11 +112,15 @@ public abstract class AbstractPiece implements Pieces {
         Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal),
                 premierCoup, isCatchOk, isCastlingPossible);
 
-        IMoveStrategyFactory factory = AbstractMoveFactory.getInstance().getFactory();
+        IMoveStrategyFactory factory = FactoryManager.getInstance().getNewInstance(IMoveStrategyFactory.class);
 
-        MoveStrategy move = factory.create(this.getClass(), new Deplacement(
-                new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
-        return move.isMoveOk(dep);
+        if (factory != null) {
+            MoveStrategy move = factory.create(this.getClass(), new Deplacement(
+                    new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
+            return move.isMoveOk(dep);
+        }
+        return false;
+
     }
 
 }
