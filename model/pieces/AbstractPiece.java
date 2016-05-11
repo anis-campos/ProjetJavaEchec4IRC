@@ -112,7 +112,7 @@ public abstract class AbstractPiece implements Pieces {
         Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal),
                 premierCoup, isCatchOk, isCastlingPossible);
 
-        IMoveStrategyFactory factory = FactoryManager.getInstance().getNewInstance(IMoveStrategyFactory.class);
+        IMoveStrategyFactory factory = FactoryManager.getInstance().getFactory(IMoveStrategyFactory.class);
 
         if (factory != null) {
             MoveStrategy move = factory.create(this.getClass(), new Deplacement(

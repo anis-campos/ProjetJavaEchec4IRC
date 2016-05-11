@@ -1,6 +1,6 @@
 package model.configuration;
 
-import tools.Introspection2;
+import tools.Introspection;
 
 import java.util.HashMap;
 
@@ -13,7 +13,7 @@ public class FactoryManager implements IFactoryManager {
     HashMap<Class<?>, Class<?>> map;
 
     private FactoryManager() {
-    	map = new HashMap<>();
+        map = new HashMap<>();
     }
 
     public static FactoryManager getInstance() {
@@ -33,7 +33,7 @@ public class FactoryManager implements IFactoryManager {
     }
 
     @Override
-    public <T extends IFactory> T getNewInstance(Class<T> type, Object... args) {
+    public <T extends IFactory> T getFactory(Class<T> type, Object... args) {
         if (type == null || !map.containsKey(type)) throw new IllegalArgumentException();
 
         final Class<T> implType = (Class<T>) map.get(type);
@@ -41,10 +41,11 @@ public class FactoryManager implements IFactoryManager {
         String nomClasse = implType.getName();
 
         try {
-            return (T) Introspection2.newInstance(nomClasse, args);
-        } catch (InstantiationException e) {
+            return (T) Introspection.invokeStatic(nomClasse, args, "getInstance");
+        } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
+
     }
 }

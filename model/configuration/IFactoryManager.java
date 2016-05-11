@@ -8,7 +8,7 @@ public interface IFactoryManager {
 
     <T extends IFactory> void bind(final Class<? extends T> type, final Class<? extends T> implType);
 
-    <T extends IFactory> T getNewInstance(final Class<T> type, final Object... args) throws InstantiationException;
+    <T extends IFactory> T getFactory(final Class<T> type, final Object... args) throws InstantiationException;
 
 
 }
