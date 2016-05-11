@@ -1,6 +1,8 @@
 package vue;
 
 import controler.ChessGameControlers;
+
+import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
 import model.pieces.PieceIHM;
 
@@ -106,7 +108,11 @@ public class ChessGameCmdLine extends AbstractView {
     public void start() {
 
     }
-
+	@Override
+	public void changeMode(MoveStrategyType mode) {
+		// TODO Auto-generated method stub
+		
+	}
     @Override
     public void highlight(List<Coord> patern) {
 

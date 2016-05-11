@@ -1,6 +1,7 @@
 package vue.GUI;
 
 import controler.ChessGameControlers;
+import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
@@ -76,6 +77,9 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         frame = new JFrame(Title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(600, 10);
+        
+        Menu menu = new Menu();
+        frame.setJMenuBar(menu.getMenuBar());
 
 
         this.boardSize = dim;
@@ -231,4 +235,10 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     public void mouseMoved(MouseEvent e) {
 
     }
+
+	@Override
+	public void changeMode(MoveStrategyType mode) {
+		System.out.println("ccoucou ça marche:!!!!!!!!!!!!");
+		
+	}
 }

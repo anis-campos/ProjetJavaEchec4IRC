@@ -1,5 +1,6 @@
 package vue;
 
+import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
 import model.pieces.PieceIHM;
 
@@ -23,6 +24,8 @@ public interface IView {
     void End();
 
     void start();
+    
+    void changeMode(MoveStrategyType mode);
 
     void highlight(List<Coord> patern);
 }
