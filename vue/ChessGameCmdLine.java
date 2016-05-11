@@ -2,8 +2,8 @@ package vue;
 
 import controler.ChessGameControlers;
 
-import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
+import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 
 import java.util.HashMap;
@@ -108,13 +108,16 @@ public class ChessGameCmdLine extends AbstractView {
     public void start() {
 
     }
-	@Override
-	public void changeMode(MoveStrategyType mode) {
-		// TODO Auto-generated method stub
-		
-	}
+    
     @Override
     public void highlight(List<Coord> patern) {
 
     }
+
+
+	@Override
+	public void changeMode(GameMode mode) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -2,8 +2,9 @@ package controler.controlerLocal;
 
 import controler.ChessGameControlers;
 import model.game.ChessGame;
-import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
+import model.configuration.Configurator;
+import model.configuration.GameMode;
 
 /**
  * Created by Anis on 27/04/2016.
@@ -44,6 +45,7 @@ public class ChessGameControler implements ChessGameControlers {
 
 	@Override
 	public void changeMode(GameMode mode) {
-		this.model.changeMode(mode);
+		Configurator configurator = Configurator.getInstance();
+		configurator.setMode(mode);
 	}
 }

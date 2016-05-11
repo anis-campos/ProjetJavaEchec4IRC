@@ -25,7 +25,7 @@ public class Configurator {
     }
 
 
-    public void setMode(GamMode mode) {
+    public void setMode(GameMode mode) {
         switch (mode) {
 
             case Standard:

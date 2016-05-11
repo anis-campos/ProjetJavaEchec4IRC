@@ -1,8 +1,8 @@
 package vue.GUI;
 
 import controler.ChessGameControlers;
-import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
+import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
 import vue.IView;
@@ -244,7 +244,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			changeMode(Enum.valueOf(MoveStrategyType.class,e.getActionCommand()));			
+			changeMode(Enum.valueOf(GameMode.class,e.getActionCommand()));			
 		}
 		
 	};

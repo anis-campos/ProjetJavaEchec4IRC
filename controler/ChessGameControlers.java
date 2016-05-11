@@ -1,7 +1,7 @@
 package controler;
 
 import model.common.Coord;
-import model.moveStrategy.MoveStrategyType;
+import model.configuration.GameMode;
 
 public interface ChessGameControlers {
 

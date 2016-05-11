@@ -13,7 +13,7 @@ public class FactoryManager implements IFactoryManager {
     HashMap<Class<?>, Class<?>> map;
 
     private FactoryManager() {
-
+    	map = new HashMap<>();
     }
 
     public static FactoryManager getInstance() {

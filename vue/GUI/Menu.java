@@ -7,12 +7,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
-import model.moveStrategy.MoveStrategyType;
-import vue.IView;
+import model.configuration.GameMode;
 
 public class Menu{
 	JMenuBar menuBar;
@@ -29,7 +25,7 @@ public class Menu{
 				
 		ButtonGroup group = new ButtonGroup();
 		
-		MoveStrategyType[] moveStrategyValues = MoveStrategyType.values(); 
+		GameMode[] moveStrategyValues = GameMode.values(); 
 		
 		for(int i = 0 ; i < moveStrategyValues.length ; i++){
 			rbMenuItem = new JRadioButtonMenuItem(moveStrategyValues[i].toString());

@@ -3,7 +3,7 @@ package launcher.localLauncher;
 import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
 import model.configuration.Configurator;
-import model.configuration.GamMode;
+import model.configuration.GameMode;
 import model.game.ChessGame;
 import vue.AbstractView;
 import vue.GUI.ChessGameGUI;
@@ -44,7 +44,7 @@ public class LauncherGUI {
 
 	private static void setContext() {
 
-		Configurator.getInstance().setMode(GamMode.Standard);
+		Configurator.getInstance().setMode(GameMode.Standard);
 
 	}
 }

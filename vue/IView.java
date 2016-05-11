@@ -1,7 +1,7 @@
 package vue;
 
-import model.moveStrategy.MoveStrategyType;
 import model.common.Coord;
+import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 
 import java.util.List;
