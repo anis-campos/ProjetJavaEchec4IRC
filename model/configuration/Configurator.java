@@ -11,9 +11,11 @@ public class Configurator {
 
     private static Configurator instance;
     IFactoryManager factoryManager;
+    private GameMode mode;
 
     private Configurator() {
         factoryManager = FactoryManager.getInstance();
+        this.mode = GameMode.Standard;
     }
 
     public static Configurator getInstance() {
@@ -24,8 +26,17 @@ public class Configurator {
         return instance;
     }
 
+    public GameMode getMode() {
+        return mode;
+    }
+
 
     public void setMode(GameMode mode) {
+        this.mode = mode;
+
+    }
+
+    private void applyMode() {
         switch (mode) {
 
             case Standard:
@@ -38,5 +49,4 @@ public class Configurator {
                 break;
         }
     }
-
 }

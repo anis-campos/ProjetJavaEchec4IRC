@@ -5,15 +5,10 @@ import model.common.Coord;
 import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
-import vue.IView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.List;
 
 /**
@@ -42,7 +37,14 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     private int yAdjustment;
 
     private JLabel sauvPieceToMove;
+    private ActionListener changeListener = new ActionListener() {
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeMode(Enum.valueOf(GameMode.class, e.getActionCommand()));
+        }
+
+    };
 
     public ChessGameGUI(String Title, ChessGameControlers chessGameControler, Dimension dim) {
         super(chessGameControler);
@@ -75,12 +77,11 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     }
 
-
     private void initFields(String Title, Dimension dim) {
         frame = new JFrame(Title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(600, 10);
-        
+
         Menu menu = new Menu();
         menu.setListener(changeListener);
         frame.setJMenuBar(menu.getMenuBar());
@@ -97,22 +98,10 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         this.layeredPaneDamier = new JLayeredPane();
     }
 
-
     @Override
     public void display(List<PieceIHM> pieces) {
         damier.update(pieces);
         frame.revalidate();
-    }
-
-    @Override
-    public void undoMove() {
-        sauvPieceToMove.setVisible(true);
-        frame.revalidate();
-    }
-
-    @Override
-    public void redoMove() {
-
     }
 
     @Override
@@ -166,7 +155,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
             	this.pieceToMoveSquare = null;
             	return;
             }
-            
+
             // avant de d�placer la pi�ce, on en positionne un clone invisible
             // au m�me endroit : cela servira lors du rafraichissement de la fen�tre (update)
             sauvPieceToMove = new JLabel(this.pieceToMove.getIcon());
@@ -217,7 +206,6 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         // la m�thode update est appel�e pour rafraichir l'affichage
     }
 
-
     @Override
     public void mouseDragged(MouseEvent e) {
         if (this.pieceToMove != null && pieceToMoveSquare != null) {
@@ -239,15 +227,6 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     public void mouseMoved(MouseEvent e) {
 
     }
-
-    private ActionListener changeListener = new ActionListener() {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			changeMode(Enum.valueOf(GameMode.class,e.getActionCommand()));			
-		}
-		
-	};
     
 	@Override
 	public void changeMode(GameMode mode) {
