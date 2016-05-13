@@ -360,6 +360,12 @@ public class Echiquier implements BoardGames {
         return jeuCourant.getPieceColor(x, y);
     }
 
+    @Override
+    public boolean undoMove(Coord cInit, Coord cFinal) {
+        return  jeuCourant.undoMove(cInit, cFinal);
+
+    }
+
     /**
      * @return message relatif aux déplacement, capture, etc.
      */

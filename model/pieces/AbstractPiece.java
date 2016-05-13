@@ -19,10 +19,13 @@ import model.moveStrategy.IMoveStrategyFactory;
 public abstract class AbstractPiece implements Pieces {
 
     private final IFactoryManager manager = FactoryManager.getInstance();
-    private int x, y;
+    private int x;
+    private int y;
     private Couleur couleur;
     private boolean premierCoup;
     private IMoveStrategy move;
+
+    private int nbcoups;
 
     /**
      * @param couleur
@@ -33,6 +36,7 @@ public abstract class AbstractPiece implements Pieces {
         this.y = coord.y;
         this.couleur = couleur;
         this.premierCoup = true;
+        nbcoups = 0;
     }
 
     /* (non-Javadoc)
@@ -75,6 +79,7 @@ public abstract class AbstractPiece implements Pieces {
             this.y = y;
             ret = true;
             premierCoup = false;
+            nbcoups++;
         }
         return ret;
 
@@ -121,8 +126,7 @@ public abstract class AbstractPiece implements Pieces {
 
 
         if (factory != null) {
-            move = factory.create(this.getClass(), new Deplacement(
-                    new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
+            move = factory.create(this.getClass(), dep);
 
             return move.isMoveOk(dep);
         }
@@ -130,5 +134,28 @@ public abstract class AbstractPiece implements Pieces {
 
     }
 
+    @Override
+    public void undoMove(int x, int y) {
+        if (Coord.coordonnees_valides(x, y)) {
+            this.x = x;
+            this.y = y;
+            if (nbcoups == 1) {
+                premierCoup = true;
+            }
+            nbcoups--;
+        }
+
+    }
+
+    @Override
+    public boolean isFirstMove() {
+        return premierCoup;
+    }
+
+    @Override
+    public void undoCapture(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 

@@ -9,20 +9,17 @@ import model.moveStrategy.MoveStrategyTempestFactory;
  */
 public class Configurator {
 
-    private static Configurator instance;
-    IFactoryManager factoryManager;
+    private static final Configurator instance = new Configurator();
+    private final IFactoryManager factoryManager;
     private GameMode mode;
 
     private Configurator() {
         factoryManager = FactoryManager.getInstance();
         this.mode = GameMode.Standard;
+        applyMode();
     }
 
     public static Configurator getInstance() {
-        if (instance == null) {
-            instance = new Configurator();
-        }
-
         return instance;
     }
 
@@ -33,7 +30,7 @@ public class Configurator {
 
     public void setMode(GameMode mode) {
         this.mode = mode;
-
+        applyMode();
     }
 
     private void applyMode() {

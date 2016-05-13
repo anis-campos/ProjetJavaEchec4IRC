@@ -1,4 +1,4 @@
-package vue.command;
+package vue.command.generic;
 
 import java.util.Deque;
 import java.util.LinkedList;

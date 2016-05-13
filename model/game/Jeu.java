@@ -1,6 +1,7 @@
 package model.game;
 
 
+import model.common.Coord;
 import model.common.Couleur;
 import model.pieces.PieceIHM;
 import model.pieces.Pieces;
@@ -27,11 +28,7 @@ public class Jeu implements Game {
     private static boolean isPromotion;
     // en cas d'annulation si le déplacement met le roi en échec
     private static Pieces pieceToMoveUndo;
-    private static int xInitUndo;
-    private static int yInitUndo;
     private static Pieces pieceToCatchUndo;
-    private static int xFinalUndo;
-    private static int yFinalUndo;
 
 
     protected List<Pieces> pieces;
@@ -110,8 +107,6 @@ public class Jeu implements Game {
             // Sauvegarde dans l'hypothèse où déplacement
             // mettrait le roi en échec par exemple
             pieceToMoveUndo = pieceToMove;
-            xInitUndo = xInit;
-            yInitUndo = yInit;
 
             // Pour anticiper la promotion du pion
             isLastPion = pieceToMove.getName().startsWith("Pion");
@@ -147,13 +142,26 @@ public class Jeu implements Game {
 
         // Pour rembobiner si le roi opposé est mis en échec par exemple
         pieceToCatchUndo = pieceToCatch;
-        xFinalUndo = pieceToCatch.getX();
-        yFinalUndo = pieceToCatch.getY();
+
 
         ret = pieceToCatch.capture();
         isPieceToCatch = false;
 
         return ret;
+    }
+
+    @Override
+    public boolean undoMove(Coord cInit, Coord cFinal) {
+        if (pieceToMoveUndo != null && !pieceToMoveUndo.isFirstMove()) {
+            pieceToMoveUndo.undoMove(cInit.x, cInit.y);
+            if (pieceToCatchUndo != null) {
+                pieceToCatchUndo.undoCapture(cFinal.x, cFinal.y);
+            }
+            pieceToCatchUndo = pieceToMoveUndo = null;
+            return true;
+        }
+
+        return false;
     }
 
 
@@ -241,13 +249,6 @@ public class Jeu implements Game {
         this.isCastling = true;
 
     }
-
-
-
-//		public static void main(String[] args) {
-//			Jeu jeu = new Jeu(Couleur.BLANC);
-//			System.out.println(jeu);
-//		}
 
 }
 

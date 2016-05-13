@@ -1,4 +1,6 @@
-package vue.command;
+package vue.command.compensate;
+
+import vue.command.generic.AbstractInvoker;
 
 /**
  * Created by Anis on 12/05/2016.

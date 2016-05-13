@@ -31,7 +31,7 @@ public interface ChessGameControlers {
 	 */
 	boolean isPlayerOK(Coord initCoord);
 	
-	void changeMode(GameMode mode);
+	GameMode changeMode(GameMode mode);
 
 
 	void undoMove(Coord cInit, Coord cFinal);

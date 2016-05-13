@@ -1,4 +1,4 @@
-package vue.command;
+package vue.command.generic;
 
 import model.common.Coord;
 import model.configuration.GameMode;
@@ -8,7 +8,7 @@ import model.configuration.GameMode;
  */
 public class CommandParameters {
 
-    GameMode mode;
-    Coord cInit, cFinal;
+    public GameMode mode;
+    public Coord cInit, cFinal;
 
 }

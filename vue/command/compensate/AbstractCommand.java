@@ -1,6 +1,7 @@
-package vue.command;
+package vue.command.compensate;
 
 import controler.ChessGameControlers;
+import vue.command.generic.CommandParameters;
 
 /**
  * Created by Anis on 12/05/2016.

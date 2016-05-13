@@ -61,5 +61,13 @@ public class ChessGame extends Observable {
 
         return echiquier.isPlayerOk(pieceCoord);
     }
+
+    public void undoMove(Coord cInit, Coord cFinal) {
+
+        if(this.echiquier.undoMove(cInit,cFinal)){
+            echiquier.switchJoueur();
+            notifyObservers(new MoveNotification(cFinal,cInit,echiquier.getPiecesIHM(),false));
+        }
+    }
 }
 

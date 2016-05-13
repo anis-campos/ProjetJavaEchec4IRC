@@ -5,6 +5,9 @@ import model.common.Coord;
 import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
+import vue.command.compensate.ChangeModeCommand;
+import vue.command.compensate.MoveCommand;
+import vue.command.generic.CommandParameters;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +40,8 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     private int yAdjustment;
 
     private JLabel sauvPieceToMove;
-    private ActionListener changeListener = new ActionListener() {
+
+    private ActionListener modeChangeListener = new ActionListener() {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -45,6 +49,23 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         }
 
     };
+
+    private ActionListener commandListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "Undo":
+                    invoker.undo();
+                    System.out.println("Undo");
+                    break;
+                case "Redo":
+                    invoker.redo();
+                    System.out.println("Redo");
+                    break;
+            }
+        }
+    };
+    private Menu menu;
 
     public ChessGameGUI(String Title, ChessGameControlers chessGameControler, Dimension dim) {
         super(chessGameControler);
@@ -60,6 +81,9 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     private void setListener() {
         frame.addMouseListener(this);
         frame.addMouseMotionListener(this);
+        menu.setActionModeChange(modeChangeListener);
+        menu.setActionCommand(commandListener);
+
     }
 
     private void setLayout() {
@@ -82,8 +106,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(600, 10);
 
-        Menu menu = new Menu();
-        menu.setListener(changeListener);
+        menu = new Menu();
         frame.setJMenuBar(menu.getMenuBar());
 
 
@@ -150,10 +173,10 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
             Coord initCoord = this.damier.getCoord(this.pieceToMoveSquare);
 
-            if(!this.chessGameControler.isPlayerOK(initCoord)){
-            	this.pieceToMove = null;
-            	this.pieceToMoveSquare = null;
-            	return;
+            if (!this.chessGameControler.isPlayerOK(initCoord)) {
+                this.pieceToMove = null;
+                this.pieceToMoveSquare = null;
+                return;
             }
 
             // avant de d�placer la pi�ce, on en positionne un clone invisible
@@ -192,6 +215,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         initCoord = this.damier.getCoord(this.pieceToMoveSquare);
         finalCoord = this.damier.getCoord(targetSquare);
 
+
         // Si les coordonn�es finales sont en dehors du damier, on les force � -1
         // cela permettra � la m�thode chessGame.move de g�rer le message d'erreur
         if (finalCoord == null) {
@@ -199,7 +223,13 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         }
 
         // Invoque la m�thode de d�placement de l'�chiquier
-        this.chessGameControler.move(initCoord, finalCoord);
+        // this.chessGameControler.move(initCoord, finalCoord);
+
+        CommandParameters commandParameters = new CommandParameters();
+        commandParameters.cInit = initCoord;
+        commandParameters.cFinal = finalCoord;
+        MoveCommand c = factory.createCommand(MoveCommand.class, commandParameters);
+        this.invoker.exec(c);
 
         // l'�chiquier est observ� par cette fen�tre
         // d�s lors qu'il est modifi�, la vue en est avertie
@@ -227,9 +257,14 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     public void mouseMoved(MouseEvent e) {
 
     }
-    
-	@Override
-	public void changeMode(GameMode mode) {
-		this.chessGameControler.changeMode(mode);		
-	}
+
+    @Override
+    public void changeMode(GameMode mode) {
+        CommandParameters commandParameters = new CommandParameters();
+        commandParameters.mode = mode;
+        ChangeModeCommand c = factory.createCommand(ChangeModeCommand.class, commandParameters);
+        this.invoker.exec(c);
+
+        //this.chessGameControler.changeMode(mode);
+    }
 }

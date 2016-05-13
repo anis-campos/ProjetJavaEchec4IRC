@@ -1,6 +1,7 @@
 package model.game;
 
 
+import model.common.Coord;
 import model.common.Couleur;
 
 /**
@@ -44,5 +45,6 @@ public interface BoardGames {
 	 * @return la couleur de la pièce sélectionnée
 	 */
 	Couleur getPieceColor(int x, int y);
- 
+
+	boolean undoMove(Coord cInit, Coord cFinal);
 }

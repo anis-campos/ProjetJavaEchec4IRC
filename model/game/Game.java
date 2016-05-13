@@ -1,6 +1,7 @@
 package model.game;
 
 
+import model.common.Coord;
 
 /**
  * @author francoise.perrin
@@ -50,6 +51,6 @@ public interface Game  {
 	boolean capture(int xCatch, int yCatch);
 
 
-
+	boolean undoMove(Coord cInit, Coord cFinal);
 }
 
