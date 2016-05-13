@@ -5,5 +5,5 @@ import model.configuration.IFactory;
 import model.pieces.AbstractPiece;
 
 public interface IMoveStrategyFactory extends IFactory {
-	MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement);
+	IMoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement);
 }

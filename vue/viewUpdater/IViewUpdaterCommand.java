@@ -21,7 +21,7 @@ import vue.IView;
  * Remaque : Cela est possible grace à de l'introspection.
  *
  */
-public interface IViewUpdater {
+public interface IViewUpdaterCommand {
 
     void execute(Notification notif, IView view);
 

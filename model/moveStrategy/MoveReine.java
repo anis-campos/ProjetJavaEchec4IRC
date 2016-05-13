@@ -2,7 +2,7 @@ package model.moveStrategy;
 
 import model.common.Deplacement;
 
-public class MoveReine implements MoveStrategy {
+public class MoveReine implements IMoveStrategy {
 
 	private static MoveReine instance;
 

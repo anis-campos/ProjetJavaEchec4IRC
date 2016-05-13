@@ -5,8 +5,9 @@ import model.common.Coord;
 import model.common.Couleur;
 import model.common.Deplacement;
 import model.configuration.FactoryManager;
+import model.configuration.IFactoryManager;
+import model.moveStrategy.IMoveStrategy;
 import model.moveStrategy.IMoveStrategyFactory;
-import model.moveStrategy.MoveStrategy;
 
 /**
  * @author francoise.perrin
@@ -17,9 +18,11 @@ import model.moveStrategy.MoveStrategy;
  */
 public abstract class AbstractPiece implements Pieces {
 
+    private final IFactoryManager manager = FactoryManager.getInstance();
     private int x, y;
     private Couleur couleur;
     private boolean premierCoup;
+    private IMoveStrategy move;
 
     /**
      * @param couleur
@@ -113,12 +116,14 @@ public abstract class AbstractPiece implements Pieces {
         Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal),
                 premierCoup, isCatchOk, isCastlingPossible);
 
-        IMoveStrategyFactory factory = FactoryManager.getInstance().getFactory(IMoveStrategyFactory.class);
+
+        IMoveStrategyFactory factory = manager.getFactory(IMoveStrategyFactory.class);
+
 
         if (factory != null) {
-            MoveStrategy move = factory.create(this.getClass(), new Deplacement(
+            move = factory.create(this.getClass(), new Deplacement(
                     new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
-            
+
             return move.isMoveOk(dep);
         }
         return false;

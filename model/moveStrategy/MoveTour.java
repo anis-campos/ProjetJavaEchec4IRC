@@ -2,7 +2,7 @@ package model.moveStrategy;
 
 import model.common.Deplacement;
 
-public class MoveTour implements MoveStrategy {
+public class MoveTour implements IMoveStrategy {
 
     private static MoveTour instance;
 

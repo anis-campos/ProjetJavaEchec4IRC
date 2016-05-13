@@ -1,10 +1,10 @@
 package controler.controlerLocal;
 
 import controler.ChessGameControlers;
-import model.game.ChessGame;
 import model.common.Coord;
 import model.configuration.Configurator;
 import model.configuration.GameMode;
+import model.game.ChessGame;
 
 /**
  * Created by Anis on 27/04/2016.
@@ -48,4 +48,9 @@ public class ChessGameControler implements ChessGameControlers {
 		Configurator configurator = Configurator.getInstance();
 		configurator.setMode(mode);
 	}
+
+    @Override
+    public void undoMove(Coord cInit, Coord cFinal) {
+
+    }
 }

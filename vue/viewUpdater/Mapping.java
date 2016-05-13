@@ -10,17 +10,17 @@ import java.util.HashMap;
 public class Mapping {
 
 
-    private HashMap<Class<? extends Notification>, IViewUpdater> map;
+    private HashMap<Class<? extends Notification>, IViewUpdaterCommand> map;
 
     public Mapping() {
         map = new HashMap<>();
     }
 
-    public void setBinding(Class<? extends Notification> notificationType, IViewUpdater viewUpdater){
+    public void setBinding(Class<? extends Notification> notificationType, IViewUpdaterCommand viewUpdater) {
         map.put(notificationType,viewUpdater);
     }
 
-    public IViewUpdater getViewUpdater(Class<? extends Notification> notificationType){
+    public IViewUpdaterCommand getViewUpdater(Class<? extends Notification> notificationType) {
         if(map.containsKey(notificationType)){
             return map.get(notificationType);
         }

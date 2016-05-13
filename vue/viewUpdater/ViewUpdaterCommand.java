@@ -7,11 +7,11 @@ import vue.IView;
 /**
  * Created by Anis on 29/04/2016.
  */
-public class ViewUpdater<T extends Notification> implements IViewUpdater {
+public class ViewUpdaterCommand<T extends Notification> implements IViewUpdaterCommand {
 
     private AbstractViewUpdater viewUpdater;
 
-    public ViewUpdater() {
+    public ViewUpdaterCommand() {
     }
 
 

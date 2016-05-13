@@ -32,6 +32,8 @@ public class Jeu implements Game {
     private static Pieces pieceToCatchUndo;
     private static int xFinalUndo;
     private static int yFinalUndo;
+
+
     protected List<Pieces> pieces;
     protected Couleur couleur;
     private boolean isCastling;

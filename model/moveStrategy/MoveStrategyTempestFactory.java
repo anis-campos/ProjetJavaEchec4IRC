@@ -22,8 +22,8 @@ public class MoveStrategyTempestFactory implements IMoveStrategyFactory{
     }
 
 	@Override
-	public MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
-		String pieceName = null;
+    public IMoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
+        String pieceName = null;
 
 		if(deplacement.cInit.x == 0 || deplacement.cInit.x == 7){
 			pieceName = "Tour";
@@ -40,9 +40,9 @@ public class MoveStrategyTempestFactory implements IMoveStrategyFactory{
 		
 		String MoveStrategyName = "model.moveStrategy.Move" + pieceName;
 
-        MoveStrategy rep = null;
+        IMoveStrategy rep = null;
         try {
-            rep = (MoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
+            rep = (IMoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
         } catch (Exception e) {
             e.printStackTrace();
         }

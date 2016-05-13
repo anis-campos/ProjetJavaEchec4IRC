@@ -34,5 +34,5 @@ public interface ChessGameControlers {
 	void changeMode(GameMode mode);
 
 
-
+	void undoMove(Coord cInit, Coord cFinal);
 }

@@ -3,12 +3,11 @@ package vue.command;
 /**
  * Created by Anis on 11/05/2016.
  */
-public interface IInvoker {
-    void addCommand(ICommand command);
+public interface IInvoker<C extends ICommand> {
 
-    void doCommand();
+    void exec(C cmd);
 
-    void undoCommand();
+    void undo();
 
-    void redoCommand();
+    void redo();
 }

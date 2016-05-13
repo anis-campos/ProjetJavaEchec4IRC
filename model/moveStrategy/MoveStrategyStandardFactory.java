@@ -27,14 +27,14 @@ public class MoveStrategyStandardFactory implements IMoveStrategyFactory{
     }
 
 
-    public MoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
+    public IMoveStrategy create(Class<? extends AbstractPiece> type, Deplacement deplacement) {
         String pieceName = type.getSimpleName();
 
         String MoveStrategyName = "model.moveStrategy.Move" + pieceName;
 
-        MoveStrategy rep = null;
+        IMoveStrategy rep = null;
         try {
-            rep = (MoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
+            rep = (IMoveStrategy) Introspection.invokeStatic(MoveStrategyName, null, "getInstance");
         } catch (Exception e) {
             e.printStackTrace();
         }

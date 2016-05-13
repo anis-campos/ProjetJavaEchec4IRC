@@ -2,7 +2,7 @@ package model.moveStrategy;
 
 import model.common.Deplacement;
 
-public abstract class MovePion implements MoveStrategy {
+public abstract class MovePion implements IMoveStrategy {
 
     protected MovePion() {
     }

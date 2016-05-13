@@ -3,6 +3,7 @@ package model.configuration;
 import tools.Introspection;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Anis on 10/05/2016.
@@ -11,6 +12,8 @@ public class FactoryManager implements IFactoryManager {
 
     private static FactoryManager instance;
     HashMap<Class<?>, Class<?>> map;
+
+    private List<IFactory> stubList;
 
     private FactoryManager() {
         map = new HashMap<>();
@@ -34,7 +37,7 @@ public class FactoryManager implements IFactoryManager {
 
     @Override
     public <T extends IFactory> T getFactory(Class<T> type, Object... args) {
-        if (type == null || !map.containsKey(type)) throw new IllegalArgumentException();
+        if (type == null || !map.containsKey(type)) ;
 
         final Class<T> implType = (Class<T>) map.get(type);
 
