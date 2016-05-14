@@ -82,7 +82,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         frame.setLocation(600, 10);
         
         Menu menu = new Menu();
-        menu.setListener(changeListener);
+        menu.setListener(changeListener, editionListener);
         frame.setJMenuBar(menu.getMenuBar());
 
 
@@ -247,6 +247,14 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 			changeMode(Enum.valueOf(GameMode.class,e.getActionCommand()));			
 		}
 		
+	};
+	
+	private ActionListener editionListener = new ActionListener() {
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			System.out.println(e.getActionCommand() + " fait !!");			
+		}
 	};
     
 	@Override
