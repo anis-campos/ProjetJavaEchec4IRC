@@ -69,13 +69,15 @@ public class Menu{
 		return menuBar;
 	}
 
-	public void setListener(ActionListener changeListener, ActionListener editionListener) {
+	public void setActionModeChange(ActionListener changeListener) {
 		for(int i = 0 ; i < ((JMenu)menuBar.getMenu(MENU_MODE)).getItemCount() ; i++){
 			((JMenu)menuBar.getMenu(MENU_MODE)).getItem(i).addActionListener(changeListener);
-		}
-		
+		}		
+	}
+
+	public void setActionCommand(ActionListener commandListener) {
 		for(int i = 0 ; i < ((JMenu)menuBar.getMenu(MENU_EDITION)).getItemCount() ; i++){
-			((JMenu)menuBar.getMenu(MENU_EDITION)).getItem(i).addActionListener(editionListener);
+			((JMenu)menuBar.getMenu(MENU_EDITION)).getItem(i).addActionListener(commandListener);
 		}
 	}
 }

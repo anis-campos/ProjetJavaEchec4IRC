@@ -105,14 +105,8 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         frame = new JFrame(Title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(600, 10);
-<<<<<<< HEAD
-        
-        Menu menu = new Menu();
-        menu.setListener(changeListener, editionListener);
-=======
 
         menu = new Menu();
->>>>>>> 560a2623982cfa26cfec49a0f95ba0e12edf0468
         frame.setJMenuBar(menu.getMenuBar());
 
 
@@ -264,7 +258,6 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     }
 
-<<<<<<< HEAD
     private ActionListener changeListener = new ActionListener() {
 
 		@Override
@@ -282,11 +275,6 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 		}
 	};
     
-	@Override
-	public void changeMode(GameMode mode) {
-		this.chessGameControler.changeMode(mode);		
-	}
-=======
     @Override
     public void changeMode(GameMode mode) {
         CommandParameters commandParameters = new CommandParameters();
@@ -296,5 +284,4 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
         //this.chessGameControler.changeMode(mode);
     }
->>>>>>> 560a2623982cfa26cfec49a0f95ba0e12edf0468
 }
