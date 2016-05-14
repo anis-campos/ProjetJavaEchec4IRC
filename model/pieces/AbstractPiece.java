@@ -5,8 +5,9 @@ import model.common.Coord;
 import model.common.Couleur;
 import model.common.Deplacement;
 import model.configuration.FactoryManager;
+import model.configuration.IFactoryManager;
+import model.moveStrategy.IMoveStrategy;
 import model.moveStrategy.IMoveStrategyFactory;
-import model.moveStrategy.MoveStrategy;
 
 /**
  * @author francoise.perrin
@@ -17,9 +18,14 @@ import model.moveStrategy.MoveStrategy;
  */
 public abstract class AbstractPiece implements Pieces {
 
-    private int x, y;
+    private final IFactoryManager manager = FactoryManager.getInstance();
+    private int x;
+    private int y;
     private Couleur couleur;
     private boolean premierCoup;
+    private IMoveStrategy move;
+
+    private int nbcoups;
 
     /**
      * @param couleur
@@ -30,6 +36,7 @@ public abstract class AbstractPiece implements Pieces {
         this.y = coord.y;
         this.couleur = couleur;
         this.premierCoup = true;
+        nbcoups = 0;
     }
 
     /* (non-Javadoc)
@@ -72,6 +79,7 @@ public abstract class AbstractPiece implements Pieces {
             this.y = y;
             ret = true;
             premierCoup = false;
+            nbcoups++;
         }
         return ret;
 
@@ -113,17 +121,41 @@ public abstract class AbstractPiece implements Pieces {
         Deplacement dep = new Deplacement(new Coord(getX(), getY()), new Coord(xFinal, yFinal),
                 premierCoup, isCatchOk, isCastlingPossible);
 
-        IMoveStrategyFactory factory = FactoryManager.getInstance().getFactory(IMoveStrategyFactory.class);
+
+        IMoveStrategyFactory factory = manager.getFactory(IMoveStrategyFactory.class);
+
 
         if (factory != null) {
-            MoveStrategy move = factory.create(this.getClass(), new Deplacement(
-                    new Coord(x, y), new Coord(xFinal, yFinal), premierCoup, isCatchOk, isCastlingPossible));
-            
+            move = factory.create(this.getClass(), dep);
+
             return move.isMoveOk(dep);
         }
         return false;
 
     }
 
+    @Override
+    public void undoMove(int x, int y) {
+        if (Coord.coordonnees_valides(x, y)) {
+            this.x = x;
+            this.y = y;
+            if (nbcoups == 1) {
+                premierCoup = true;
+            }
+            nbcoups--;
+        }
+
+    }
+
+    @Override
+    public boolean isFirstMove() {
+        return premierCoup;
+    }
+
+    @Override
+    public void undoCapture(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 }
 

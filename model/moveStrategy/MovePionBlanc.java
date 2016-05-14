@@ -1,5 +1,7 @@
 package model.moveStrategy;
 
+import model.common.Deplacement;
+
 public class MovePionBlanc extends MovePion {
 
 	private static MovePionBlanc instance;
@@ -16,13 +18,13 @@ public class MovePionBlanc extends MovePion {
 	}
 	
     @Override
-    protected boolean isVerticalOk(int yFinal) {
-        return yFinal - this.dep.cInit.y < 0;
+    protected boolean isVerticalOk(Deplacement dep) {
+        return dep.cFinal.y - dep.cInit.y < 0;
     }
 
     @Override
-    protected boolean isDiagonalOk(int xFinal, int yFinal) {
-        return (yFinal == this.dep.cInit.y - 1) && (Math.abs(xFinal - this.dep.cInit.x) == 1);
+    protected boolean isDiagonalOk(Deplacement dep) {
+        return (dep.cFinal.y == dep.cInit.y - 1) && (Math.abs(dep.cFinal.x - dep.cInit.x) == 1);
     }
 
 }

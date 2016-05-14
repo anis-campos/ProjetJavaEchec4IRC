@@ -13,10 +13,6 @@ public interface IView {
 
     void display(List<PieceIHM> pieces);
 
-    void undoMove();
-
-    void redoMove();
-
     void promotionCandidate(Coord coord);
 
     void EchecDetected();

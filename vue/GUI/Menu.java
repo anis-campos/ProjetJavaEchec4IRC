@@ -1,6 +1,7 @@
 package vue.GUI;
 
-import java.awt.event.ActionEvent;
+import model.configuration.GameMode;
+
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -11,9 +12,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
-
-import model.configuration.GameMode;
-
 /**
  * 
  * @author Antoine

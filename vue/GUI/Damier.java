@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by Anis on 09/05/2016.
  */
-public class Damier extends JPanel {
+class Damier extends JPanel {
 
     private BiMap<Coord, JPanel> map;
 

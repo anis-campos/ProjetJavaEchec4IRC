@@ -6,7 +6,7 @@ import java.util.Set;
 /**
  * Created by Anis on 09/05/2016.
  */
-public class BiMap<K, V> {
+class BiMap<K, V> {
 
     private HashMap<K, V> map;
     private HashMap<V, K> inverseMap;

@@ -1,10 +1,10 @@
 package controler.controlerLocal;
 
 import controler.ChessGameControlers;
-import model.game.ChessGame;
 import model.common.Coord;
 import model.configuration.Configurator;
 import model.configuration.GameMode;
+import model.game.ChessGame;
 
 /**
  * Created by Anis on 27/04/2016.
@@ -25,7 +25,7 @@ public class ChessGameControler implements ChessGameControlers {
     @Override
     public boolean move(Coord initCoord, Coord finalCoord) {
 
-        return model.move(initCoord.x,initCoord.y,finalCoord.x,finalCoord.y);
+        return model.move(initCoord.x, initCoord.y, finalCoord.x, finalCoord.y);
     }
 
     @Override
@@ -43,9 +43,16 @@ public class ChessGameControler implements ChessGameControlers {
         return model.isPlayerOK(initCoord);
     }
 
-	@Override
-	public void changeMode(GameMode mode) {
-		Configurator configurator = Configurator.getInstance();
-		configurator.setMode(mode);
-	}
+    @Override
+    public GameMode changeMode(GameMode mode) {
+        Configurator configurator = Configurator.getInstance();
+        GameMode rep = configurator.getMode();
+        configurator.setMode(mode);
+        return rep;
+    }
+
+    @Override
+    public void undoMove(Coord cInit, Coord cFinal) {
+        this.model.undoMove(cInit, cFinal);
+    }
 }

@@ -51,5 +51,11 @@ public interface Pieces {
 	 * Positionne x et y à -1
 	 */
 	boolean capture();
+
+	void undoCapture(int x, int y);
+
+	void undoMove(int x, int y);
+
+	boolean isFirstMove();
 }
 

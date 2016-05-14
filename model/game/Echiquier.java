@@ -49,6 +49,45 @@ public class Echiquier implements BoardGames {
         this.isCastlingPossible = false;
     }
 
+    public static void main(String[] args) {
+        Echiquier e = new Echiquier();
+        boolean isMoveOK = false;
+
+        System.out.println("Test classe Echiquier\n");
+
+        System.out.println(e);
+
+        System.out.print("\n Déplacement de 3,6 vers 3,4 = ");
+        if (e.isMoveOk(3, 6, 3, 4))
+            isMoveOK = e.move(3, 6, 3, 4);        // true
+        System.out.println(e.getMessage() + "\n");
+        System.out.println(e);
+        if (isMoveOK)
+            e.switchJoueur();
+
+        System.out.print("\n Déplacement de 3,4 vers 3,6 = ");
+        if (e.isMoveOk(3, 4, 3, 6))
+            isMoveOK = e.move(3, 4, 3, 6);    // false : autre joueur
+        System.out.println(e.getMessage() + "\n");
+        System.out.println(e);
+        e.switchJoueur();
+
+        System.out.print("\n Déplacement de 3,4 vers 3,6 = ");
+        if (e.isMoveOk(3, 4, 3, 6))
+            isMoveOK = e.move(3, 4, 3, 6);    // false : algo KO
+        System.out.println(e.getMessage() + "\n");
+        System.out.println(e);
+        if (isMoveOK)
+            e.switchJoueur();
+
+        for (PieceIHM p : e.getPiecesIHM()) {
+            System.out.println(p.getNameSimple() + " (" + p.getX() + "," + p.getY() + ")");
+        }
+
+        // ...
+
+
+    }
 
     /**
      * Permet de changer le joueur courant.
@@ -62,7 +101,6 @@ public class Echiquier implements BoardGames {
             this.jeuOppose = this.jeuNoir;
         }
     }
-
 
     /**
      * Permet de vérifier si une piéce peut être déplacée.
@@ -189,6 +227,10 @@ public class Echiquier implements BoardGames {
         return ret;
     }
 
+	/* (non-Javadoc)
+     * @see java.lang.Object#toString()
+	 * invoque la méthode toString des 2 jeux
+	 */
 
     /**
      * Permet de vérifier s'il existe une piece sur la trajectoire
@@ -300,11 +342,6 @@ public class Echiquier implements BoardGames {
         return pieceOnTrajectCoord;
     }
 
-	/* (non-Javadoc)
-     * @see java.lang.Object#toString()
-	 * invoque la méthode toString des 2 jeux
-	 */
-
     public String toString() {
         String st = "";
         st += "Jeu Blanc " + this.jeuBlanc.toString() + "\n";
@@ -323,6 +360,12 @@ public class Echiquier implements BoardGames {
         return jeuCourant.getPieceColor(x, y);
     }
 
+    @Override
+    public boolean undoMove(Coord cInit, Coord cFinal) {
+        return  jeuCourant.undoMove(cInit, cFinal);
+
+    }
+
     /**
      * @return message relatif aux déplacement, capture, etc.
      */
@@ -337,56 +380,14 @@ public class Echiquier implements BoardGames {
         this.message = message;
     }
 
-
     public boolean isEnd() {
         return false;
     }
-
 
     public List<PieceIHM> getPiecesIHM() {
         List<PieceIHM> rep = jeuBlanc.getPiecesIHM();
         rep.addAll(jeuNoir.getPiecesIHM());
         return rep;
-
-    }
-
-    public static void main(String[] args) {
-        Echiquier e = new Echiquier();
-        boolean isMoveOK = false;
-
-        System.out.println("Test classe Echiquier\n");
-
-        System.out.println(e);
-
-        System.out.print("\n Déplacement de 3,6 vers 3,4 = ");
-        if (e.isMoveOk(3, 6, 3, 4))
-            isMoveOK = e.move(3, 6, 3, 4);        // true
-        System.out.println(e.getMessage() + "\n");
-        System.out.println(e);
-        if (isMoveOK)
-            e.switchJoueur();
-
-        System.out.print("\n Déplacement de 3,4 vers 3,6 = ");
-        if (e.isMoveOk(3, 4, 3, 6))
-            isMoveOK = e.move(3, 4, 3, 6);    // false : autre joueur
-        System.out.println(e.getMessage() + "\n");
-        System.out.println(e);
-        e.switchJoueur();
-
-        System.out.print("\n Déplacement de 3,4 vers 3,6 = ");
-        if (e.isMoveOk(3, 4, 3, 6))
-            isMoveOK = e.move(3, 4, 3, 6);    // false : algo KO
-        System.out.println(e.getMessage() + "\n");
-        System.out.println(e);
-        if (isMoveOK)
-            e.switchJoueur();
-
-        for (PieceIHM p : e.getPiecesIHM()) {
-            System.out.println(p.getNameSimple() + " (" + p.getX() + "," + p.getY() + ")");
-        }
-
-        // ...
-
 
     }
 
@@ -408,11 +409,9 @@ public class Echiquier implements BoardGames {
         this.isPieceToMoveOk = jeuCourant.isPieceHere(piece.x, piece.y);
         for (int i = 0; i < 64; i++) {
             Coord coord = new Coord(i / 8, i % 8);
-            System.out.println(coord);
             if (isMoveLegal(piece.x, piece.y, coord.x, coord.y))
                 rep.add(coord);
         }
-        System.out.println("Taille du pattern : " + rep.size());
 
         return rep;
     }

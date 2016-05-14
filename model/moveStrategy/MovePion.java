@@ -2,17 +2,13 @@ package model.moveStrategy;
 
 import model.common.Deplacement;
 
-public abstract class MovePion implements MoveStrategy {
-
-    protected Deplacement dep;
-
+public abstract class MovePion implements IMoveStrategy {
 
     protected MovePion() {
     }
 
     @Override
     public boolean isMoveOk(Deplacement dep) {
-        this.dep = dep;
         boolean ret = false;
 
         // Déplacement vertical
@@ -22,12 +18,12 @@ public abstract class MovePion implements MoveStrategy {
                     && (Math.abs(dep.cFinal.y - dep.cInit.y) <= 1 ||
                     (Math.abs(dep.cFinal.y - dep.cInit.y) <= 2 && dep.premierCoup == true))) {
 
-                ret = isVerticalOk(dep.cFinal.y);
+                ret = isVerticalOk(dep);
             }
         }
         // Déplacement diagonal
         else {
-            ret = isDiagonalOk(dep.cFinal.x, dep.cFinal.y);
+            ret = isDiagonalOk(dep);
         }
 
         return ret;
@@ -35,9 +31,9 @@ public abstract class MovePion implements MoveStrategy {
     }
 
 
-    protected abstract boolean isVerticalOk(int yFinal);
+    protected abstract boolean isVerticalOk(Deplacement dep);
 
-    protected abstract boolean isDiagonalOk(int xFinal, int yFinal);
+    protected abstract boolean isDiagonalOk(Deplacement dep);
 
 
 }

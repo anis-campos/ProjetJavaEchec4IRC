@@ -5,15 +5,13 @@ import model.common.Coord;
 import model.configuration.GameMode;
 import model.pieces.PieceIHM;
 import vue.AbstractView;
-import vue.IView;
+import vue.command.compensate.ChangeModeCommand;
+import vue.command.compensate.MoveCommand;
+import vue.command.generic.CommandParameters;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
+import java.awt.event.*;
 import java.util.List;
 
 /**
@@ -43,6 +41,31 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     private JLabel sauvPieceToMove;
 
+    private ActionListener modeChangeListener = new ActionListener() {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeMode(Enum.valueOf(GameMode.class, e.getActionCommand()));
+        }
+
+    };
+
+    private ActionListener commandListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            switch (e.getActionCommand()) {
+                case "Undo":
+                    invoker.undo();
+                    System.out.println("Undo");
+                    break;
+                case "Redo":
+                    invoker.redo();
+                    System.out.println("Redo");
+                    break;
+            }
+        }
+    };
+    private Menu menu;
 
     public ChessGameGUI(String Title, ChessGameControlers chessGameControler, Dimension dim) {
         super(chessGameControler);
@@ -58,6 +81,9 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
     private void setListener() {
         frame.addMouseListener(this);
         frame.addMouseMotionListener(this);
+        menu.setActionModeChange(modeChangeListener);
+        menu.setActionCommand(commandListener);
+
     }
 
     private void setLayout() {
@@ -75,14 +101,18 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     }
 
-
     private void initFields(String Title, Dimension dim) {
         frame = new JFrame(Title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocation(600, 10);
+<<<<<<< HEAD
         
         Menu menu = new Menu();
         menu.setListener(changeListener, editionListener);
+=======
+
+        menu = new Menu();
+>>>>>>> 560a2623982cfa26cfec49a0f95ba0e12edf0468
         frame.setJMenuBar(menu.getMenuBar());
 
 
@@ -97,22 +127,10 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         this.layeredPaneDamier = new JLayeredPane();
     }
 
-
     @Override
     public void display(List<PieceIHM> pieces) {
         damier.update(pieces);
         frame.revalidate();
-    }
-
-    @Override
-    public void undoMove() {
-        sauvPieceToMove.setVisible(true);
-        frame.revalidate();
-    }
-
-    @Override
-    public void redoMove() {
-
     }
 
     @Override
@@ -161,12 +179,12 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
             Coord initCoord = this.damier.getCoord(this.pieceToMoveSquare);
 
-            if(!this.chessGameControler.isPlayerOK(initCoord)){
-            	this.pieceToMove = null;
-            	this.pieceToMoveSquare = null;
-            	return;
+            if (!this.chessGameControler.isPlayerOK(initCoord)) {
+                this.pieceToMove = null;
+                this.pieceToMoveSquare = null;
+                return;
             }
-            
+
             // avant de d�placer la pi�ce, on en positionne un clone invisible
             // au m�me endroit : cela servira lors du rafraichissement de la fen�tre (update)
             sauvPieceToMove = new JLabel(this.pieceToMove.getIcon());
@@ -203,6 +221,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         initCoord = this.damier.getCoord(this.pieceToMoveSquare);
         finalCoord = this.damier.getCoord(targetSquare);
 
+
         // Si les coordonn�es finales sont en dehors du damier, on les force � -1
         // cela permettra � la m�thode chessGame.move de g�rer le message d'erreur
         if (finalCoord == null) {
@@ -210,13 +229,18 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
         }
 
         // Invoque la m�thode de d�placement de l'�chiquier
-        this.chessGameControler.move(initCoord, finalCoord);
+        // this.chessGameControler.move(initCoord, finalCoord);
+
+        CommandParameters commandParameters = new CommandParameters();
+        commandParameters.cInit = initCoord;
+        commandParameters.cFinal = finalCoord;
+        MoveCommand c = factory.createCommand(MoveCommand.class, commandParameters);
+        this.invoker.exec(c);
 
         // l'�chiquier est observ� par cette fen�tre
         // d�s lors qu'il est modifi�, la vue en est avertie
         // la m�thode update est appel�e pour rafraichir l'affichage
     }
-
 
     @Override
     public void mouseDragged(MouseEvent e) {
@@ -240,6 +264,7 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 
     }
 
+<<<<<<< HEAD
     private ActionListener changeListener = new ActionListener() {
 
 		@Override
@@ -261,4 +286,15 @@ public class ChessGameGUI extends AbstractView implements MouseListener, MouseMo
 	public void changeMode(GameMode mode) {
 		this.chessGameControler.changeMode(mode);		
 	}
+=======
+    @Override
+    public void changeMode(GameMode mode) {
+        CommandParameters commandParameters = new CommandParameters();
+        commandParameters.mode = mode;
+        ChangeModeCommand c = factory.createCommand(ChangeModeCommand.class, commandParameters);
+        this.invoker.exec(c);
+
+        //this.chessGameControler.changeMode(mode);
+    }
+>>>>>>> 560a2623982cfa26cfec49a0f95ba0e12edf0468
 }

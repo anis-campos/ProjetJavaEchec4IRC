@@ -3,37 +3,32 @@ package vue;
 import controler.ChessGameControlers;
 import model.observe.IObserver;
 import model.observe.notification.Notification;
-import vue.viewUpdater.IViewUpdater;
-import vue.viewUpdater.ViewUpdaterFactory;
-
-import java.util.HashMap;
+import vue.command.compensate.CompensableCommandFactory;
+import vue.command.compensate.ConpensationInvoker;
+import vue.viewUpdater.ViewUpdaterManager;
 
 /**
  * Created by Anis on 29/04/2016.
  */
 public abstract class AbstractView implements IObserver, IView {
 
-    private HashMap<Class<? extends Notification>, IViewUpdater> map;
 
-    protected ChessGameControlers chessGameControler;
+    protected final ChessGameControlers chessGameControler;
+    protected final ConpensationInvoker invoker;
+    private final ViewUpdaterManager viewUpdaterManager;
+    protected final CompensableCommandFactory factory;
 
     public AbstractView(ChessGameControlers chessGameControler) {
         this.chessGameControler = chessGameControler;
-        map = ViewUpdaterFactory.mapping();
-
+        this.viewUpdaterManager = ViewUpdaterManager.getInstance();
+        this.invoker = new ConpensationInvoker();
+        this.factory = new CompensableCommandFactory(chessGameControler);
     }
 
     @Override
     public final void update(Notification notif) {
 
-        IViewUpdater updater = map.get(notif.getClass());
-        if (updater != null){
-            updater.execute(notif, this);
-            System.out.println("Notification recu : " + notif.getClass().getSimpleName());
-            System.out.println("\t Init : " + notif.cInit + " - Final : "+notif.cFinal);
-        }
-        else
-            System.out.println("Notification non gérée : " + notif.getClass().getSimpleName());
+        viewUpdaterManager.invokeViewUpdater(notif, this);
     }
 
 

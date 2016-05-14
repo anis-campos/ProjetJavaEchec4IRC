@@ -1,7 +1,6 @@
 package vue;
 
 import controler.ChessGameControlers;
-
 import model.common.Coord;
 import model.configuration.GameMode;
 import model.pieces.PieceIHM;
@@ -77,16 +76,6 @@ public class ChessGameCmdLine extends AbstractView {
 
         String repeated = new String(new char[100]).replace("\0", "-");
         System.out.println("\n" + repeated);
-    }
-
-    @Override
-    public void undoMove() {
-
-    }
-
-    @Override
-    public void redoMove() {
-
     }
 
     @Override
